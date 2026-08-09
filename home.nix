@@ -14,7 +14,7 @@
     zsh-powerlevel10k
     niri
     waybar
-    rofi-wayland
+    rofi
     swaync
     swww
     swaylock-effects
