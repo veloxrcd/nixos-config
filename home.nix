@@ -15,7 +15,7 @@
     niri
     waybar
     rofi
-    swaync
+    swaynotificationcenter
     swww
     swaylock-effects
     wlogout
