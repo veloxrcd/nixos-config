@@ -1,89 +1,77 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.username = "mo";
   home.homeDirectory = "/home/mo";
+  home.stateVersion = "24.05";
 
+  programs.home-manager.enable = true;
+
+  # Noctalia & Niri Dependencies
   home.packages = with pkgs; [
-    htop
-    fastfetch
-    ripgrep
-    fd
-    fzf
-    lazygit
-    zsh-powerlevel10k
+    # Audio & Clipboard
+    pwvucontrol
+    cliphist
+    wl-clipboard
+
+    # Shell, Desktop & Terminal
     niri
-    waybar
-    rofi
-    swaynotificationcenter
-    swww
-    swaylock-effects
-    wlogout
-    alacritty
+    quickshell
     kitty
+    fastfetch
+
+    # Utilities & Wallpaper Daemon
+    awww                 # <--- Corrected wallpaper daemon
     pamixer
     brightnessctl
-    wl-clipboard
     grim
     slurp
+
+    # Fonts used by Noctalia
+    jetbrains-mono
   ];
 
+  # Allow fonts to be discovered system-wide
+  fonts.fontconfig.enable = true;
 
-  programs.firefox = {
-    enable = true;
-    profiles.mo = {
-      isDefault = true;
-      settings = {
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "svg.context-properties.content.enabled" = true;
-        "sidebar.revamp" = true;
-        "sidebar.verticalTabs" = true;
-      };
-    };
+  # Symlink dotfiles directly from ~/nixos-config/dotfiles/ to ~/.config/
+  xdg.configFile = {
+    "niri".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/niri";
+    "noctalia".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/noctalia";
+    "kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/kitty";
+    "fastfetch".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/fastfetch";
   };
 
-
+  # Shell aliases
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" "docker" ];
-    };
-
-    initContent = ''
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-    '';
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+    ];
 
     shellAliases = {
       rebuild = "cd ~/nixos-config && git add . && (git diff --cached --quiet || git commit -m \"rebuild: $(date +'%Y-%m-%d %H:%M:%S')\") && doas nixos-rebuild switch --flake .#nixos";
       conf = "nvim ~/nixos-config/configuration.nix";
       homeconf = "nvim ~/nixos-config/home.nix";
       flakeconf = "nvim ~/nixos-config/flake.nix";
+      deskconf = "nvim ~/nixos-config/modules/desktop.nix";
       servconf = "nvim ~/nixos-config/modules/services.nix";
       progconf = "nvim ~/nixos-config/modules/programs/default.nix";
       devconf = "nvim ~/nixos-config/modules/programs/dev.nix";
       gameconf = "nvim ~/nixos-config/modules/gaming.nix";
       nixdir = "cd ~/nixos-config && nvim .";
-      deskconf = "nvim ~/nixos-config/modules/desktop.nix";
     };
-  };
 
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "mo";
-        email = "mo@example.com";
-      };
-    };
+    initExtra = ''
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '';
   };
-
-  home.stateVersion = "26.11";
 }
-
-
