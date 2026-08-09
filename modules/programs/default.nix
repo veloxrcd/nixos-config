@@ -12,5 +12,6 @@
     mpv
     alacritty
     file-roller
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
