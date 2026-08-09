@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    inputs.termipedia.url = "github:kantiankant/Termipedia"
+    inputs.termipedia.url = "github:kantiankant/Termipedia";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     noctalia = {
