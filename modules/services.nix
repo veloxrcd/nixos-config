@@ -18,6 +18,8 @@
     };
   };
 
+
+
   security.doas = {
     enable = true;
     extraRules = [{

@@ -12,7 +12,22 @@
     fzf
     lazygit
     zsh-powerlevel10k
+    niri
+    waybar
+    rofi-wayland
+    swaync
+    swww
+    swaylock-effects
+    wlogout
+    alacritty
+    kitty
+    pamixer
+    brightnessctl
+    wl-clipboard
+    grim
+    slurp
   ];
+
 
   programs.firefox = {
     enable = true;
@@ -27,6 +42,7 @@
     };
   };
 
+:
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -53,6 +69,7 @@
       devconf = "nvim ~/nixos-config/modules/programs/dev.nix";
       gameconf = "nvim ~/nixos-config/modules/gaming.nix";
       nixdir = "cd ~/nixos-config && nvim .";
+      deskconf = "nvim ~/nixos-config/modules/desktop.nix";
     };
   };
 
@@ -68,4 +85,5 @@
 
   home.stateVersion = "26.11";
 }
+
 
