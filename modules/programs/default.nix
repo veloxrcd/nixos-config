@@ -15,5 +15,6 @@
     file-roller
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.termipedia.packages.${system}.termipedia
+    chromium
   ];
 }
