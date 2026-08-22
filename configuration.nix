@@ -12,6 +12,10 @@
     ./modules/programs
   ];
 
+
+boot.supportedFilesystems = [ "btrfs" ];
+
+
   users.users.mo = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" ];
