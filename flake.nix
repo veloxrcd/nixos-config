@@ -3,13 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    termipedia.url = "github:kantiankant/Termipedia";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    noctalia = {
-        url = "github:noctalia-dev/noctalia";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+    
+    termipedia = {
+      url = "github:kantiankant/Termipedia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {

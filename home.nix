@@ -3,23 +3,19 @@
 {
   home.username = "mo";
   home.homeDirectory = "/home/mo";
-  home.stateVersion = "26.11";
+  home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
 
-  # Noctalia & Niri Dependencies
   home.packages = with pkgs; [
-    # Audio & Clipboard
     pwvucontrol
     cliphist
     wl-clipboard
     jetbrains-mono
   ];
 
-  # Allow fonts to be discovered system-wide
   fonts.fontconfig.enable = true;
 
-  # Shell aliases
   programs.zsh = {
     enable = true;
     enableCompletion = true;
