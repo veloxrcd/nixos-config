@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     neovim
-    vscodium
     git
     gh
     gnumake
