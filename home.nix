@@ -3,7 +3,7 @@
 {
   home.username = "mo";
   home.homeDirectory = "/home/mo";
-  home.stateVersion = "24.05";
+  home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
 
@@ -13,34 +13,11 @@
     pwvucontrol
     cliphist
     wl-clipboard
-
-    # Shell, Desktop & Terminal
-    niri
-    quickshell
-    kitty
-    fastfetch
-
-    # Utilities & Wallpaper Daemon
-    awww                 # <--- Corrected wallpaper daemon
-    pamixer
-    brightnessctl
-    grim
-    slurp
-
-    # Fonts used by Noctalia
     jetbrains-mono
   ];
 
   # Allow fonts to be discovered system-wide
   fonts.fontconfig.enable = true;
-
-  # Symlink dotfiles directly from ~/nixos-config/dotfiles/ to ~/.config/
-  xdg.configFile = {
-    "niri".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/niri";
-    "noctalia".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/noctalia";
-    "kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/kitty";
-    "fastfetch".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/fastfetch";
-  };
 
   # Shell aliases
   programs.zsh = {
