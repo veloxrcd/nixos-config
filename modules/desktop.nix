@@ -16,7 +16,7 @@
 
 programs.qylock = {
 enable = true;
-theme = "minecraft";
+theme = "sword";
 };
 
 
