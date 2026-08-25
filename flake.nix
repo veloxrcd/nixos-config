@@ -19,6 +19,12 @@
       url = "github:gmodena/nix-flatpak";
      };
 
+    qylock = {
+    url = "github:Darkkal44/qylock";
+     inputs.nixpkgs.follows = "nixpkgs";
+     };
+     
+   
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,13 +32,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nix-flatpak, qylock, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-
+        qylock.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

@@ -13,6 +13,13 @@
     kdePackages.plasma-systemmonitor
 ];
 
+
+programs.qylock = {
+enable = true;
+theme = "sword";
+};
+
+
 fonts.packages = with pkgs; [
 nerd-fonts.iosevka
 ];
