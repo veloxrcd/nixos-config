@@ -22,5 +22,6 @@
     protonup-qt
     bottles
     wineWow64Packages.stable
+    prismlauncher
   ];
 }
