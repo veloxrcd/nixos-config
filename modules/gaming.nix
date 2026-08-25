@@ -16,8 +16,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    mangohud
-    lutris
     heroic
     protonup-qt
     bottles
