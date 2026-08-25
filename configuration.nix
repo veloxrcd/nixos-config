@@ -15,7 +15,7 @@
  
 
  environment.shellAliases = {
-rebuild = "cd ~/nixos-config && git add . && nh os switch .";
+rebuild = "cd ~/nixos-config && git add . && nh os switch . && nixsync";
       conf = "nvim ~/nixos-config/configuration.nix";
       homeconf = "nvim ~/nixos-config/home.nix";
       flakeconf = "nvim ~/nixos-config/flake.nix";
