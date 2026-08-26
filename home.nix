@@ -15,11 +15,6 @@
   };
 
  xdg.configFile."kitty/kitty.conf".source = ./dotfiles/kitty/kitty.conf;
- 
- home.file.".config/fish/fish_variables" = {
-    source = ./dotfiles/fish/fish_variables;
-    force = true;
-  };
 
   home.packages = with pkgs; [
     pwvucontrol
