@@ -12,6 +12,7 @@
     tree-sitter
     docker-compose
     gnome-boxes
+    obs-studio
   ];
 
    virtualisation.libvirtd.enable = true;

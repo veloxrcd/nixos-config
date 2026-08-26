@@ -16,6 +16,7 @@
       "org.vinegarhq.Sober"
       "app.zen_browser.zen"
       "com.discordapp.Discord"
+      "org.altaqwaa.Altaqwaa"
       ];
 
 
