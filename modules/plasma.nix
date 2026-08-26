@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -85,3 +85,4 @@
     };
   };
 }
+

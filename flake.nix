@@ -6,32 +6,26 @@
     
     termipedia = {
       url = "github:kantiankant/Termipedia";
-       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-     areofyl-fetch = {
-       url = "github:areofyl/fetch";
-        inputs.nixpkgs.follows = "nixpkgs";
-     };
+    areofyl-fetch = {
+      url = "github:areofyl/fetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-
-      nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     qylock = {
-    url = "github:Darkkal44/qylock";
-     inputs.nixpkgs.follows = "nixpkgs";
-     };
+      url = "github:Darkkal44/qylock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
      
-        
-     plasma-manager = {
-    url = "github:nix-community/plasma-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.home-manager.follows = "home-manager";
-  };
-
-
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,12 +33,12 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, qylock, plasma-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, qylock, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-	{ nixpkgs.hostPlatform = "x86_64-linux"; }
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
         qylock.nixosModules.default
         home-manager.nixosModules.home-manager
         {
@@ -52,15 +46,12 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.backupFileExtension = "backup";
-          home-manager.users.mo = { inputs, ...}: {
-	  imports = [ 
-	  ./home.nix
-	  plasma-manager.homeModules.plasma-manager
-	  ];
-	};
-
+          
+          
+          home-manager.users.mo = import ./home.nix;
         }
       ];
     };
   };
 }
+

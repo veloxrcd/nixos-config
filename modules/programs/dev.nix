@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     neovim
-    git
     gh
     gnumake
     gcc
@@ -15,16 +14,11 @@
     obs-studio
   ];
 
-   virtualisation.libvirtd.enable = true;
-
+  virtualisation.libvirtd.enable = true;
 
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
-    };
-
+  };
 }
-
-
-
 
