@@ -41,10 +41,10 @@
 
   outputs = { nixpkgs, home-manager, nix-flatpak, qylock, plasma-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
+	{ nixpkgs.hostPlatform = "x86_64-linux"; }
         qylock.nixosModules.default
         home-manager.nixosModules.home-manager
         {
