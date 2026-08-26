@@ -7,8 +7,6 @@
     gh
     gnumake
     gcc
-    ripgrep
-    fd
     lua-language-server
     stylua
     tree-sitter

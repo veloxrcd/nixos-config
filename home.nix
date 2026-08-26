@@ -5,7 +5,10 @@
   home.homeDirectory = "/home/mo";
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
-  imports = [ inputs.areofyl-fetch.homeManagerModules.default ];
+  imports = [ 
+   inputs.areofyl-fetch.homeManagerModules.default 
+   ./modules/plasma.nix
+  ];
    
   programs.fetch = {
     enable = true;
@@ -23,6 +26,8 @@
     deadnix
     nixfmt
     fzf
+    ripgrep
+    fd
     nix-search-tv
   ];
 

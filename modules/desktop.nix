@@ -24,20 +24,6 @@ enable = true;
 theme = "sword";
 };
 
-services.tlp = {
-  enable = true;
-  settings = {
-    # Prevent the Intel GPU from dropping to minimum power speeds
-    INTEL_GPU_MIN_FREQ_ON_AC = 800; # Boosts base clock from 300MHz to 800MHz
-    INTEL_GPU_MAX_FREQ_ON_AC = 1150; # Maximum frequency for UHD 620
-    INTEL_GPU_BOOST_FREQ_ON_AC = 1150;
-    
-    # You can keep energy saving active on battery if you prefer:
-    INTEL_GPU_MIN_FREQ_ON_BAT = 300;
-    INTEL_GPU_MAX_FREQ_ON_BAT = 800;
-  };
-};
-
 
 fonts.packages = with pkgs; [
 nerd-fonts.iosevka

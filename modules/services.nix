@@ -3,11 +3,8 @@
 {
   services.fwupd.enable = true;
   services.thermald.enable = true;
-
-  # Explicitly disabled to resolve auto-cpufreq collision with KDE Plasma 6
-  services.power-profiles-daemon.enable = false;
-  services.auto-cpufreq.enable = true;
   services.input-remapper.enable = true;
+  services.power-profiles-daemon.enable = true;
   services.flatpak.enable = true;
   services.flatpak.remotes = [{
    name = "flathub";

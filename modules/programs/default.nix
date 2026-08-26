@@ -22,7 +22,6 @@
     file-roller
     inputs.termipedia.packages.${system}.termipedia
     chromium
-    github-cli
     fishPlugins.tide
   ];
 }

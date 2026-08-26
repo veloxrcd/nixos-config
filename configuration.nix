@@ -25,10 +25,15 @@ rebuild = "cd ~/nixos-config && git add . && nh os switch . && nixsync";
       devconf = "nvim ~/nixos-config/modules/programs/dev.nix";
       gameconf = "nvim ~/nixos-config/modules/gaming.nix";
       nixdir = "cd ~/nixos-config && nvim .";
-      nixsync = "cd ~/nixos-config/ && git add . && git commit -m \"Backup: (date)\" && git push origin main";
+      nixsync = "cd ~/nixos-config/ && git add . && git commit -m \"Backup: (date -Iseconds)\" && git push origin main";
       clean = "nh clean all --keep 4";
  };
 
+nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 7d";
+};
 
 boot.supportedFilesystems = [ "btrfs" ];
 hardware.graphics.enable = true;

@@ -24,7 +24,14 @@
      inputs.nixpkgs.follows = "nixpkgs";
      };
      
-   
+        
+     plasma-manager = {
+    url = "github:nix-community/plasma-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.home-manager.follows = "home-manager";
+  };
+
+
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -32,7 +39,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, qylock, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, nix-flatpak, qylock, plasma-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -45,7 +52,13 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.backupFileExtension = "backup";
-          home-manager.users.mo = ./home.nix;
+          home-manager.users.mo = { inputs, ...}: {
+	  imports = [ 
+	  ./home.nix
+	  plasma-manager.homeManagerModules.plasma-manager
+	  ];
+	};
+
         }
       ];
     };
