@@ -27,6 +27,7 @@ rebuild = "cd ~/nixos-config && git add . && nh os switch . && nixsync";
       nixdir = "cd ~/nixos-config && nvim .";
       nixsync = "cd ~/nixos-config/ && git add . && git commit -m \"Backup: (date -Iseconds)\" && git push origin main";
       clean = "nh clean all --keep 4";
+      "," = "nix run nixpkgs#";
  };
 
 nix.gc = {
