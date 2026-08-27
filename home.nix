@@ -19,7 +19,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
   xdg.configFile."kitty".source = ./dotfiles/kitty;
   xdg.configFile."nwg-panel".source = ./dotfiles/nwg-panel;
   xdg.configFile."nwg-drawer".source = ./dotfiles/nwg-drawer;
-
+  xdg.configFile."waybar".source = ./dotfiles/waybar;
 
 
   home.packages = with pkgs; [
@@ -46,6 +46,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     kitty
     swaybg
     swaylock
+    waybar
   ];
 
   fonts.fontconfig.enable = true;

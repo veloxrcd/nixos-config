@@ -1,0 +1,115 @@
+* {
+    font-family: "Iosevka Nerd Font", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* Base window container: completely transparent so pills float */
+window#waybar {
+    background-color: transparent;
+    color: #c0caf5;
+}
+
+/* Tooltips styling */
+tooltip {
+    background: #1a1b26;
+    border: 1px solid #414868;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #c0caf5;
+    padding: 6px;
+}
+
+/* -------------------------------------------------------------------------
+ * MODULE PILLS (Left, Center, Right grouping)
+ * ------------------------------------------------------------------------- */
+
+/* Left Group: Workspaces & Mode */
+.modules-left {
+    background-color: #1a1b26;
+    border: 1px solid #414868;
+    border-radius: 14px;
+    margin-top: 6px;
+    margin-left: 10px;
+    padding: 2px 6px;
+}
+
+/* Center Group: Clock */
+.modules-center {
+    background-color: #1a1b26;
+    border: 1px solid #414868;
+    border-radius: 14px;
+    margin-top: 6px;
+    padding: 2px 12px;
+}
+
+/* Right Group: Status Indicators (Audio, Net, Bat, Tray) */
+.modules-right {
+    background-color: #1a1b26;
+    border: 1px solid #414868;
+    border-radius: 14px;
+    margin-top: 6px;
+    margin-right: 10px;
+    padding: 2px 8px;
+}
+
+/* -------------------------------------------------------------------------
+ * MODULE INTERNAL STYLING
+ * ------------------------------------------------------------------------- */
+
+/* Workspaces inside the left pill */
+#workspaces button {
+    padding: 0 8px;
+    color: #a9b1d6;
+    background: transparent;
+    border-radius: 10px;
+    margin: 2px 1px;
+}
+
+#workspaces button:hover {
+    color: #7aa2f7;
+    background-color: #24283b;
+}
+
+#workspaces button.focused {
+    color: #1a1b26;
+    background-color: #7aa2f7;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    color: #1a1b26;
+    background-color: #f7768e;
+}
+
+/* Clock pill text */
+#clock {
+    font-weight: bold;
+    color: #7dcfff;
+}
+
+/* Right pill individual elements */
+#battery, #pulseaudio, #network, #tray, #scratchpad {
+    padding: 0 8px;
+    color: #c0caf5;
+}
+
+#pulseaudio.muted {
+    color: #f7768e;
+}
+
+#battery.warning {
+    color: #e0af68;
+}
+
+#battery.critical {
+    color: #f7768e;
+}
+
+#battery.charging, #battery.plugged {
+    color: #9ece6a;
+}

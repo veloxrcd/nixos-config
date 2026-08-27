@@ -10,6 +10,9 @@ font pango:Iosevka Nerd Font 10
 exec_always nwg-panel
 exec nwg-dock -d
 exec nwg-drawer -r
+exec_always nwg-bar
+exec_always swaybg -i /home/mo/Downloads/storm.jpg -m fill
+exec_always pkill waybar; waybar -c ~/nixos-config/dotfiles/waybar/config.jsonc -s ~/nixos-config/dotfiles/waybar/style.css
 
 # --- KEYBINDINGS ---
 # Core Binds
