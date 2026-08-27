@@ -58,7 +58,4 @@ gaps outer 8
 default_border pixel 2
 smart_borders on
 
-# Colors (Tokyo Night Accent)
-class.focused           #7aa2f7 #1a1b26 #c0caf5 #7aa2f7 #7aa2f7
-class.focused_inactive  #414868 #1a1b26 #a9b1d6 #414868 #414868
-class.unfocused         #15161e #1a1b26 #a9b1d6 #15161e #15161e
+
