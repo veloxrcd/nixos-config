@@ -1,5 +1,5 @@
 # ==============================================================================
-# SWAY CONFIGURATION - REBUILT SETUP
+# SWAY CONFIGURATION - CATPPUCCIN MOCHA SETUP
 # ==============================================================================
 
 # --- VARIABLES ---
@@ -12,12 +12,13 @@ set $wallpaper /home/mo/Downloads/storm.jpg
 font pango:Iosevka Nerd Font 10
 
 # --- AUTOSTART SERVICES ---
-# Kill existing instances and start fresh
 exec_always pkill swaybg; swaybg -i $wallpaper -m fill
 exec_always pkill waybar; waybar
 exec_always pkill autotiling; autotiling
-exec nwg-dock -d
-exec nwg-drawer -r
+
+# Clipboard Daemon (Text & Images)
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 # --- GAPS & BORDERS (HYPRLAND-STYLE) ---
 gaps inner 8
@@ -27,17 +28,20 @@ smart_borders off
 smart_gaps off
 
 
+
 # --- KEYBINDINGS ---
 # Core Operations
 bindsym $mod+Return exec $term
 bindsym $mod+w exec $browser
 bindsym $mod+q kill
 
-# Launchers & GUI Utilities
-bindsym $mod+d exec nwg-drawer
-bindsym $mod+Escape exec nwg-bar
-bindsym $mod+Shift+d exec nwg-displays
-bindsym $mod+Shift+t exec nwg-look
+# Rofi Launchers & Utilities
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+c exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+period exec rofimoji --selector-args="-theme ~/.config/rofi/config.rasi"
+
+# Power Menu & Blurred Lock Screen (Swaylock-Effects)
+bindsym $mod+Escape exec --no-startup-id echo -e "󰌾 Lock\n󰍃 Exit\n󰜉 Reboot\n󰐥 Poweroff" | rofi -dmenu -p "Power" | xargs -I {} sh -c 'case "{}" in "󰌾 Lock") swaylock -F --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color cba6f7 --key-hl-color 89b4fa --line-color 00000000 --inside-color 1e1e2e88 --separator-color 00000000 --grace 2 --fade-in 0.2;; "󰍃 Exit") swaymsg exit;; "󰜉 Reboot") doas reboot;; "󰐥 Poweroff") doas poweroff;; esac'
 
 # Navigation (Vim Keys)
 bindsym $mod+h focus left
@@ -76,5 +80,3 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [app_id="pavucontrol"] floating enable, resize set 700 500, move position center
-for_window [app_id="nwg-look"] floating enable, resize set 800 600, move position center
-for_window [app_id="nwg-displays"] floating enable, resize set 900 600, move position center

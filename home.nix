@@ -20,6 +20,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
   xdg.configFile."nwg-panel".source = ./dotfiles/nwg-panel;
   xdg.configFile."nwg-drawer".source = ./dotfiles/nwg-drawer;
   xdg.configFile."waybar".source = ./dotfiles/waybar;
+  xdg.configFile."rofi".source = ./dotfiles/rofi;
 
 
   home.packages = with pkgs; [
@@ -45,10 +46,12 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     nwg-clipman
     kitty
     swaybg
-    swaylock
     waybar
     autotiling
     librsvg
+    rofimoji
+    rofi
+    swaylock-effects
   ];
 
   fonts.fontconfig.enable = true;
