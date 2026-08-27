@@ -3,10 +3,9 @@
 {
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  programs.hyprland = {
+  programs.sway = {
     enable = true;
-    withUWSM = true; # Clean systemd session management
-    xwayland.enable = true;
+    wrapperFeatures.gtk = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -16,12 +15,6 @@
     kdePackages.dolphin
     kdePackages.konsole
     kdePackages.plasma-systemmonitor
-    waybar
-    rofi
-    dunst
-    hyprpaper
-    qt5.qtwayland
-    qt6.qtwayland
   ];
 
   environment.sessionVariables = {

@@ -14,8 +14,14 @@
     enable = true;
   };
 
- xdg.configFile."kitty/kitty.conf".source = ./dotfiles/kitty/kitty.conf;
- xdg.configFile."hypr/hyprland.lua".source = ./dotfiles/hypr/hyprland.lua;
+ 
+xdg.configFile."sway".source = ./dotfiles/sway;
+  xdg.configFile."kitty".source = ./dotfiles/kitty;
+  xdg.configFile."nwg-panel".source = ./dotfiles/nwg-panel;
+  xdg.configFile."nwg-drawer".source = ./dotfiles/nwg-drawer;
+
+
+
   home.packages = with pkgs; [
     pwvucontrol
     cliphist
@@ -29,6 +35,17 @@
     ripgrep
     fd
     nix-search-tv
+    nwg-panel
+    nwg-drawer
+    nwg-bar
+    nwg-dock
+    nwg-look
+    nwg-displays
+    nwg-wrapper
+    nwg-clipman
+    kitty
+    swaybg
+    swaylock
   ];
 
   fonts.fontconfig.enable = true;

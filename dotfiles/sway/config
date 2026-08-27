@@ -1,0 +1,64 @@
+# --- VARIABLES ---
+set $mod Mod4
+set $term kitty
+set $browser flatpak run app.zen_browser.zen
+
+# --- FONT ---
+font pango:Iosevka Nerd Font 10
+
+# --- AUTOSTART NWG COMPONENTS ---
+exec_always nwg-panel
+exec nwg-dock -d
+exec nwg-drawer -r
+
+# --- KEYBINDINGS ---
+# Core Binds
+bindsym $mod+Return exec $term
+bindsym $mod+w exec $browser
+bindsym $mod+q kill
+
+# NWG Launchers & Menus
+bindsym $mod+d exec nwg-drawer
+bindsym $mod+Escape exec nwg-bar
+bindsym $mod+Shift+d exec nwg-displays
+bindsym $mod+Shift+t exec nwg-look
+
+# Focus Navigation (Vim Keys)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move Focused Window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+
+# Layout Controls
+bindsym $mod+v floating toggle
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
+
+# --- LOOK & FEEL ---
+gaps inner 6
+gaps outer 8
+default_border pixel 2
+smart_borders on
+
+# Colors (Tokyo Night Accent)
+class.focused           #7aa2f7 #1a1b26 #c0caf5 #7aa2f7 #7aa2f7
+class.focused_inactive  #414868 #1a1b26 #a9b1d6 #414868 #414868
+class.unfocused         #15161e #1a1b26 #a9b1d6 #15161e #15161e

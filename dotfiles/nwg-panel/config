@@ -1,0 +1,13 @@
+[
+  {
+    "name": "panel-top",
+    "layer": "top",
+    "output": "All",
+    "position": "top",
+    "height": 30,
+    "controls": "right",
+    "modules-left": ["sway-workspaces", "sway-mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "executor-volume", "executor-battery"]
+  }
+]
