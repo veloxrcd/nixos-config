@@ -1,5 +1,5 @@
 # ==============================================================================
-# SWAY / SWAYFX CONFIGURATION (SwayFX v0.5.3)
+# SWAY / SWAYFX CONFIGURATION (SwayFX v0.5.3 Cleaned)
 # Location: dotfiles/sway/config
 # Target Device: Lenovo ThinkPad X1 Yoga Gen 4
 # ==============================================================================
@@ -36,16 +36,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 }
 
 # ------------------------------------------------------------------------------
-# 2. SWAYFX VISUAL EFFECTS & ANIMATIONS (v0.5.3 Syntax)
+# 2. SWAYFX VISUAL EFFECTS (v0.5.3 Syntax Fixes)
 # ------------------------------------------------------------------------------
 # Corner Rounding
 corner_radius 12
 smart_corner_radius enable
 
-# Shadows
+# Shadows (shadow_length -> shadow_blur_radius in v0.5.3)
 shadows enable
 shadows_on_csd off
-shadow_length 18
+shadow_blur_radius 18
 shadow_color #00000077
 
 # Blur
@@ -53,10 +53,6 @@ blur enable
 blur_xray off
 blur_passes 3
 blur_radius 5
-
-# Animations
-animations enable
-animation_duration 250
 
 # Inactive Window Dimming
 default_dim_inactive 0.15
@@ -77,7 +73,7 @@ client.unfocused        #181825 #1e1e2e #6c7086 #45475a   #181825
 client.urgent           #f38ba8 #1e1e2e #cdd6f4 #f38ba8   #f38ba8
 
 # ------------------------------------------------------------------------------
-# 3. LAYER EFFECTS FIXES (v0.5.3 Inline Directives)
+# 3. LAYER EFFECTS FIXES (v0.5.3 Directives)
 # ------------------------------------------------------------------------------
 # Disable blur/shadow on Waybar to stop tinting/muddy artifacts
 layer_effects "waybar" blur disable
