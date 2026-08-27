@@ -19,8 +19,6 @@
 
 xdg.configFile."sway".source = ./dotfiles/sway;
   xdg.configFile."kitty".source = ./dotfiles/kitty;
-  xdg.configFile."nwg-panel".source = ./dotfiles/nwg-panel;
-  xdg.configFile."nwg-drawer".source = ./dotfiles/nwg-drawer;
   xdg.configFile."waybar".source = ./dotfiles/waybar;
   xdg.configFile."rofi".source = ./dotfiles/rofi;
 
@@ -40,14 +38,6 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     ripgrep
     fd
     nix-search-tv
-    nwg-panel
-    nwg-drawer
-    nwg-bar
-    nwg-dock
-    nwg-look
-    nwg-displays
-    nwg-wrapper
-    nwg-clipman
     kitty
     swaybg
     waybar
