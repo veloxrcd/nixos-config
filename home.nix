@@ -28,6 +28,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     wl-clipboard
     jetbrains-mono
     kitty
+    slurp
     statix
     deadnix
     nixfmt
