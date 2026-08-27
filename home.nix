@@ -15,7 +15,7 @@
   };
 
  xdg.configFile."kitty/kitty.conf".source = ./dotfiles/kitty/kitty.conf;
-
+ xdg.configFile."hypr/hyprland.lua".source = ./dotfiles/hypr/hyprland.lua;
   home.packages = with pkgs; [
     pwvucontrol
     cliphist
