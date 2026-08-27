@@ -1,32 +1,45 @@
+# ==============================================================================
+# SWAY CONFIGURATION - REBUILT SETUP
+# ==============================================================================
+
 # --- VARIABLES ---
 set $mod Mod4
 set $term kitty
 set $browser flatpak run app.zen_browser.zen
+set $wallpaper /home/mo/Downloads/storm.jpg
 
 # --- FONT ---
 font pango:Iosevka Nerd Font 10
 
-# --- AUTOSTART NWG COMPONENTS ---
-exec_always nwg-panel
+# --- AUTOSTART SERVICES ---
+# Kill existing instances and start fresh
+exec_always pkill swaybg; swaybg -i $wallpaper -m fill
+exec_always pkill waybar; waybar
+exec_always pkill autotiling; autotiling
 exec nwg-dock -d
 exec nwg-drawer -r
-exec_always nwg-bar
-exec_always swaybg -i /home/mo/Downloads/storm.jpg -m fill
-exec_always pkill waybar; waybar -c ~/nixos-config/dotfiles/waybar/config.jsonc -s ~/nixos-config/dotfiles/waybar/style.css
+
+# --- GAPS & BORDERS (HYPRLAND-STYLE) ---
+gaps inner 8
+gaps outer 6
+default_border pixel 2
+smart_borders off
+smart_gaps off
+
 
 # --- KEYBINDINGS ---
-# Core Binds
+# Core Operations
 bindsym $mod+Return exec $term
 bindsym $mod+w exec $browser
 bindsym $mod+q kill
 
-# NWG Launchers & Menus
+# Launchers & GUI Utilities
 bindsym $mod+d exec nwg-drawer
 bindsym $mod+Escape exec nwg-bar
 bindsym $mod+Shift+d exec nwg-displays
 bindsym $mod+Shift+t exec nwg-look
 
-# Focus Navigation (Vim Keys)
+# Navigation (Vim Keys)
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -49,16 +62,19 @@ bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
 
-# Layout Controls
+# Layout Controls & Toggles
 bindsym $mod+v floating toggle
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
 
-# --- LOOK & FEEL ---
-gaps inner 6
-gaps outer 8
-default_border pixel 2
-smart_borders on
+# Mouse Controls
+floating_modifier $mod normal
 
-
+# --- WINDOW RULES ---
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [app_id="pavucontrol"] floating enable, resize set 700 500, move position center
+for_window [app_id="nwg-look"] floating enable, resize set 800 600, move position center
+for_window [app_id="nwg-displays"] floating enable, resize set 900 600, move position center

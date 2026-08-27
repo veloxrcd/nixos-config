@@ -47,6 +47,8 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     swaybg
     swaylock
     waybar
+    autotiling
+    librsvg
   ];
 
   fonts.fontconfig.enable = true;
