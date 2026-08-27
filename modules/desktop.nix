@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -10,12 +9,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    kdePackages.spectacle
-    kdePackages.ark
     kdePackages.dolphin
-    kdePackages.konsole
-    kdePackages.plasma-systemmonitor
   ];
 
   environment.sessionVariables = {

@@ -14,18 +14,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     qylock = {
       url = "github:Darkkal44/qylock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
      
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+     zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+       inputs.nixpkgs.follows = "nixpkgs"; 
+       };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,7 +31,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, qylock, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, qylock, zen-browser, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [

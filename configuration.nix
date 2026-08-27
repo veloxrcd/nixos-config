@@ -10,7 +10,6 @@
     ./modules/services.nix
     ./modules/gaming.nix
     ./modules/programs
-    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
  
 

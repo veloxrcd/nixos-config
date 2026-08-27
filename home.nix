@@ -7,7 +7,6 @@
   programs.home-manager.enable = true;
   imports = [ 
    inputs.areofyl-fetch.homeManagerModules.default 
-   ./modules/plasma.nix
   ];
    
   programs.fetch = {
@@ -52,6 +51,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     rofimoji
     rofi
     swaylock-effects
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
   fonts.fontconfig.enable = true;

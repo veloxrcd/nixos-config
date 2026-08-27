@@ -5,7 +5,7 @@
 # --- VARIABLES ---
 set $mod Mod4
 set $term kitty
-set $browser flatpak run app.zen_browser.zen
+set $browser zen
 set $wallpaper /home/mo/Downloads/storm.jpg
 
 # --- FONT ---
@@ -46,11 +46,7 @@ default_border pixel 2
 smart_borders off
 smart_gaps off
 
-# Colors (Catppuccin Mocha)
-# Target                 Border  BG      Text    Indicator Child-Border
-class.focused           #cba6f7 #11111b #cdd6f4 #cba6f7   #cba6f7
-class.focused_inactive  #45475a #11111b #bac2de #45475a   #45475a
-class.unfocused         #1e1e2e #11111b #a6adc8 #1e1e2e   #1e1e2e
+
 
 # --- KEYBINDINGS ---
 # Core Operations
