@@ -52,6 +52,9 @@ xdg.configFile."sway".source = ./dotfiles/sway;
     rofi
     swaylock-effects
     inputs.zen-browser.packages.${pkgs.system}.default
+    fastfetch
+    cmatrix
+    lavat
   ];
 
   fonts.fontconfig.enable = true;

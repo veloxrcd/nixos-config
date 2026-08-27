@@ -1,79 +1,78 @@
-/* =============================================================================
- * WAYBAR STYLE SHEET (Catppuccin Mocha + Iosevka)
- * Location: dotfiles/waybar/style.css
- * ============================================================================= */
+/* ==============================================================================
+# WAYBAR CATPPUCCIN MOCHA FLOATING BUBBLES
+# Location: dotfiles/waybar/style.css
+# Font: Iosevka Nerd Font
+# ============================================================================== */
 
-/* Reset all elements */
+/* Reset & Global Settings */
 * {
     border: none;
     border-radius: 0;
-    font-family: "Iosevka Nerd Font", "Iosevka NF", "Iosevka", monospace;
-    font-weight: bold;
+    font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
     font-size: 13px;
+    font-weight: bold;
     min-height: 0;
 }
 
-/* Base Bar Styling - Solid dark background to fix weird tinting */
+/* ------------------------------------------------------------------------------
+ * MAIN BAR CONTAINER (Invisible Track)
+ * ------------------------------------------------------------------------------ */
 window#waybar {
-    background-color: #1e1e2e;
+    background-color: transparent;
     color: #cdd6f4;
-    border-bottom: 2px solid #313244;
-    transition-property: background-color;
-    transition-duration: .5s;
 }
 
-/* Tooltips */
-tooltip {
-    background: #181825;
-    border: 1px solid #45475a;
-    border-radius: 8px;
-}
-tooltip label {
-    font-family: "Iosevka Nerd Font", monospace;
-    color: #cdd6f4;
-    padding: 6px;
-}
-
-/* Workspaces Module */
-#workspaces {
-    background-color: #181825;
-    margin: 4px 6px;
-    padding: 0px 4px;
-    border-radius: 8px;
-    border: 1px solid #313244;
+/* ------------------------------------------------------------------------------
+ * BUBBLE CONTAINERS (Left, Center, Right Islands)
+ * ------------------------------------------------------------------------------ */
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: #1e1e2e; /* Catppuccin Base */
+    border: 2px solid #313244;  /* Catppuccin Surface0 */
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin-top: 6px;
+    margin-bottom: 2px;
 }
 
+.modules-left {
+    margin-left: 10px;
+}
+
+.modules-right {
+    margin-right: 10px;
+}
+
+/* ------------------------------------------------------------------------------
+ * WORKSPACES (Sway Native)
+ * ------------------------------------------------------------------------------ */
 #workspaces button {
-    padding: 0px 8px;
-    color: #a6adc8;
-    border-radius: 6px;
+    padding: 0 8px;
+    color: #6c7086; /* Overlay0 */
+    background: transparent;
+    border-radius: 8px;
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    background-color: #313244;
     color: #cdd6f4;
+    background-color: #313244;
 }
 
-#workspaces button.focused,
-#workspaces button.active {
-    background-color: #89b4fa;
-    color: #11111b;
+#workspaces button.focused {
+    color: #1e1e2e;
+    background-color: #89b4fa; /* Catppuccin Blue */
 }
 
 #workspaces button.urgent {
-    background-color: #f38ba8;
-    color: #11111b;
+    color: #1e1e2e;
+    background-color: #f38ba8; /* Catppuccin Red */
 }
 
-/* Window Title */
-#window {
-    color: #bac2de;
-    font-weight: normal;
-    padding: 0 10px;
-}
-
-/* Common Pill Module Styling */
+/* ------------------------------------------------------------------------------
+ * MODULE STYLES & SPACING
+ * ------------------------------------------------------------------------------ */
 #clock,
 #battery,
 #cpu,
@@ -89,70 +88,30 @@ tooltip label {
 #mode,
 #idle_inhibitor,
 #scratchpad,
-#power-profiles-daemon,
 #mpd {
-    padding: 2px 12px;
-    margin: 4px 3px;
-    border-radius: 8px;
-    background-color: #313244;
+    padding: 0 10px;
     color: #cdd6f4;
 }
 
-/* Custom Accent Colors for Individual Pills */
-
-/* Mode / Layout indicator */
-#mode {
-    background-color: #f38ba8;
-    color: #11111b;
+/* Accent Module Highlights */
+#clock {
+    color: #cba6f7; /* Mauve */
 }
 
-/* Audio */
-#pulseaudio {
-    background-color: #a6e3a1;
-    color: #11111b;
-}
-
-#pulseaudio.muted {
-    background-color: #6c7086;
-    color: #1e1e2e;
-}
-
-/* Network */
-#network {
-    background-color: #89b4fa;
-    color: #11111b;
-}
-
-#network.disconnected {
-    background-color: #f38ba8;
-    color: #11111b;
-}
-
-/* CPU & Memory */
-#cpu {
-    background-color: #cba6f7;
-    color: #11111b;
-}
-
-#memory {
-    background-color: #f9e2af;
-    color: #11111b;
-}
-
-/* Battery */
 #battery {
-    background-color: #94e2d5;
-    color: #11111b;
+    color: #a6e3a1; /* Green */
 }
 
 #battery.charging, #battery.plugged {
-    background-color: #a6e3a1;
-    color: #11111b;
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387; /* Peach */
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f38ba8;
-    color: #11111b;
+    color: #f38ba8; /* Red */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -160,16 +119,24 @@ tooltip label {
     animation-direction: alternate;
 }
 
-/* Clock */
-#clock {
-    background-color: #fab387;
-    color: #11111b;
+#pulseaudio {
+    color: #89b4fa; /* Blue */
 }
 
-/* Tray */
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+#network {
+    color: #f9e2af; /* Yellow */
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
 #tray {
-    background-color: #181825;
-    border: 1px solid #313244;
+    padding-right: 8px;
 }
 
 #tray > .passive {
@@ -178,13 +145,4 @@ tooltip label {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #f38ba8;
-}
-
-/* Battery Critical Blink Animation */
-@keyframes blink {
-    to {
-        background-color: #11111b;
-        color: #f38ba8;
-    }
 }
