@@ -6,6 +6,7 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    package = pkgs.swayfx;
   };
 
   environment.systemPackages = with pkgs; [

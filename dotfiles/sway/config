@@ -1,5 +1,5 @@
 # ==============================================================================
-# SWAY CONFIGURATION - CATPPUCCIN MOCHA SETUP
+# SWAYFX CONFIGURATION - CATPPUCCIN MOCHA SETUP
 # ==============================================================================
 
 # --- VARIABLES ---
@@ -10,6 +10,25 @@ set $wallpaper /home/mo/Downloads/storm.jpg
 
 # --- FONT ---
 font pango:Iosevka Nerd Font 10
+
+# --- SWAYFX VISUAL EFFECTS ---
+corner_radius 12
+shadows enable
+shadow_color #11111b80
+shadow_blur_radius 15
+
+blur enable
+blur_xray off
+blur_passes 2
+blur_radius 5
+
+default_dim_inactive 0.1
+
+# Apply blur & rounded corners directly to Waybar
+layer_effects "waybar" {
+    blur enable;
+    corner_radius 12;
+}
 
 # --- AUTOSTART SERVICES ---
 exec_always pkill swaybg; swaybg -i $wallpaper -m fill
@@ -27,7 +46,11 @@ default_border pixel 2
 smart_borders off
 smart_gaps off
 
-
+# Colors (Catppuccin Mocha)
+# Target                 Border  BG      Text    Indicator Child-Border
+class.focused           #cba6f7 #11111b #cdd6f4 #cba6f7   #cba6f7
+class.focused_inactive  #45475a #11111b #bac2de #45475a   #45475a
+class.unfocused         #1e1e2e #11111b #a6adc8 #1e1e2e   #1e1e2e
 
 # --- KEYBINDINGS ---
 # Core Operations
