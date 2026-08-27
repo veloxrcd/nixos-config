@@ -210,10 +210,11 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Screenshots (PrtSc key using grim + slurp + wl-copy)
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
-bindsym Shift+Print exec grim ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png
+# Drag area -> Saves to ~/Pictures AND copies to clipboard
+bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 
+# Full screen -> Saves to ~/Pictures AND copies to clipboard
+bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 # ------------------------------------------------------------------------------
 # 7. AUTOSTART & BACKGROUND SERVICES
 # ------------------------------------------------------------------------------
