@@ -220,7 +220,7 @@ bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H
 # 7. AUTOSTART & BACKGROUND SERVICES
 # ------------------------------------------------------------------------------
 # Wallpaper Setup
-output * bg /home/mo/Downloads/storm.jpg fill
+output * bg /home/mo/Downloads/hollow.jpg fill
 
 # Daemon Services
 exec mako
