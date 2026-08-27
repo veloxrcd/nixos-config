@@ -112,6 +112,7 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+e exec kitty -e yazi
 
 # Move Windows (Vim style + Arrows)
 bindsym $mod+Shift+h move left

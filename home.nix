@@ -25,6 +25,7 @@ xdg.configFile."sway".source = ./dotfiles/sway;
   home.packages = with pkgs; [
     pwvucontrol
     cliphist
+    yazi
     wl-clipboard
     jetbrains-mono
     kitty
