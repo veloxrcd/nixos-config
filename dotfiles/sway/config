@@ -38,7 +38,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # ------------------------------------------------------------------------------
 # 2. SWAYFX VISUAL EFFECTS & ANIMATIONS
 # ------------------------------------------------------------------------------
-# Global Animation Speed (0 to 5000ms, default 90)
+# Global Animation Speed (in ms)
+animation_duration_ms 250
 
 # Corner Rounding
 corner_radius 12
@@ -60,7 +61,7 @@ blur_radius 5
 default_dim_inactive 0.15
 dim_inactive_colors.unfocused #000000
 
-# Window Borders & Gaps (Slightly larger window area)
+# Window Borders & Gaps
 default_border pixel 2
 default_floating_border pixel 2
 gaps inner 12
@@ -86,7 +87,14 @@ layer_effects "rofi" blur enable
 layer_effects "rofi" corner_radius 12
 
 # ------------------------------------------------------------------------------
-# 4. KEYBINDINGS
+# 4. BAR INTEGRATION (WAYBAR)
+# ------------------------------------------------------------------------------
+bar {
+    swaybar_command waybar
+}
+
+# ------------------------------------------------------------------------------
+# 5. KEYBINDINGS
 # ------------------------------------------------------------------------------
 # Core Applications & Window Control
 bindsym $mod+Return exec $term
@@ -175,7 +183,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # ------------------------------------------------------------------------------
-# 5. HARDWARE & FUNCTION KEYS (F1-F6 + SCREENSHOTS + MULTIMEDIA)
+# 6. HARDWARE & FUNCTION KEYS
 # ------------------------------------------------------------------------------
 # Audio Controls
 bindsym F1 exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -207,9 +215,12 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Print exec grim ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png
 
 # ------------------------------------------------------------------------------
-# 6. AUTOSTART & BACKGROUND SERVICES
+# 7. AUTOSTART & BACKGROUND SERVICES
 # ------------------------------------------------------------------------------
-exec waybar
+# Wallpaper Setup
+output * bg /home/mo/Downloads/storm.jpg fill
+
+# Daemon Services
 exec mako
 exec swayidle -w \
     timeout 300 'swaylock -f -c 1e1e2e' \
