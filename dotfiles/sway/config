@@ -1,101 +1,218 @@
 # ==============================================================================
-# SWAYFX CONFIGURATION - CATPPUCCIN MOCHA SETUP
+# SWAY / SWAYFX CONFIGURATION
+# Location: dotfiles/sway/config
+# Target Device: Lenovo ThinkPad X1 Yoga Gen 4
 # ==============================================================================
 
-# --- VARIABLES ---
+# ------------------------------------------------------------------------------
+# 1. CONSTANTS & VARS
+# ------------------------------------------------------------------------------
 set $mod Mod4
 set $term kitty
 set $browser zen
-set $wallpaper /home/mo/Downloads/storm.jpg
+set $menu rofi -show drun -show-icons
 
-# --- FONT ---
+# Font Configuration
 font pango:Iosevka Nerd Font 10
 
-# --- SWAYFX VISUAL EFFECTS ---
-corner_radius 12
-shadows enable
-shadow_color #11111b80
-shadow_blur_radius 15
+# Output Setup (Default eDP-1 for ThinkPad X1 Yoga Gen 4)
+output eDP-1 scale 1 position 0,0
 
-blur enable
-blur_xray off
-blur_passes 2
-blur_radius 5
-
-default_dim_inactive 0.1
-
-# Apply blur & rounded corners directly to Waybar
-layer_effects "waybar" {
-    blur enable;
-    corner_radius 12;
+# Input setup (Touchpad / TrackPoint / Touchscreen)
+input "type:touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
 }
 
-# --- AUTOSTART SERVICES ---
-exec_always pkill swaybg; swaybg -i $wallpaper -m fill
-exec_always pkill waybar; waybar
-exec_always pkill autotiling; autotiling
+input "type:pointer" {
+    accel_profile "flat"
+}
 
-# Clipboard Daemon (Text & Images)
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
+# TrackPoint adjustment
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us
+}
 
-# --- GAPS & BORDERS (HYPRLAND-STYLE) ---
-gaps inner 8
-gaps outer 6
+# ------------------------------------------------------------------------------
+# 2. SWAYFX VISUAL EFFECTS & ANIMATIONS
+# ------------------------------------------------------------------------------
+# Corner Rounding
+corner_radius 12
+smart_corner_radius enable
+
+# Shadows
+shadows enable
+shadows_on_csd off
+shadow_length 18
+shadow_render_data off
+shadow_color #00000077
+
+# Blur
+blur enable
+blur_xray off
+blur_passes 3
+blur_radius 5
+
+# Animations
+animations enable
+animation_duration 250
+animation_curve ease-out-back 0.175 0.885 0.32 1.275
+
+animation_type open
+animation_type close
+animation_type workspace
+
+# Inactive Window Dimming
+default_dim_inactive 0.15
+dim_inactive_colors.unfocused #000000
+
+# Window Borders
 default_border pixel 2
-smart_borders off
-smart_gaps off
+default_floating_border pixel 2
+gaps inner 8
+gaps outer 4
+smart_gaps on
 
+# Catppuccin Mocha Window Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #89b4fa #1e1e2e #cdd6f4 #b4befe   #89b4fa
+client.focused_inactive #313244 #1e1e2e #a6adc8 #45475a   #313244
+client.unfocused        #181825 #1e1e2e #6c7086 #45475a   #181825
+client.urgent           #f38ba8 #1e1e2e #cdd6f4 #f38ba8   #f38ba8
 
+# ------------------------------------------------------------------------------
+# 3. LAYER EFFECTS FIXES (WAYBAR TINT & ROFI)
+# ------------------------------------------------------------------------------
+layer_effects "waybar" {
+    blur disable
+    shadows disable
+}
 
-# --- KEYBINDINGS ---
-# Core Operations
+layer_effects "rofi" {
+    blur enable
+    corner_radius 12
+}
+
+# ------------------------------------------------------------------------------
+# 4. KEYBINDINGS
+# ------------------------------------------------------------------------------
+# Core Applications
 bindsym $mod+Return exec $term
 bindsym $mod+w exec $browser
-bindsym $mod+q kill
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
 
-# Rofi Launchers & Utilities
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+c exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
-bindsym $mod+period exec rofimoji --selector-args="-theme ~/.config/rofi/config.rasi"
-
-# Power Menu & Blurred Lock Screen (Swaylock-Effects)
-bindsym $mod+Escape exec --no-startup-id echo -e "󰌾 Lock\n󰍃 Exit\n󰜉 Reboot\n󰐥 Poweroff" | rofi -dmenu -p "Power" | xargs -I {} sh -c 'case "{}" in "󰌾 Lock") swaylock -F --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color cba6f7 --key-hl-color 89b4fa --line-color 00000000 --inside-color 1e1e2e88 --separator-color 00000000 --grace 2 --fade-in 0.2;; "󰍃 Exit") swaymsg exit;; "󰜉 Reboot") doas reboot;; "󰐥 Poweroff") doas poweroff;; esac'
-
-# Navigation (Vim Keys)
+# Window Navigation (Vim style + Arrows)
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Move Focused Window
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move Windows (Vim style + Arrows)
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Layout Management
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus_mode_toggle
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-# Layout Controls & Toggles
-bindsym $mod+v floating toggle
-bindsym $mod+f fullscreen toggle
+# Session Control
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit'
 
-# Mouse Controls
-floating_modifier $mod normal
+# Resize Mode
+mode "resize" {
+    bindsym h resize shrink width 10 px
+    bindsym j resize grow height 10 px
+    bindsym k resize shrink height 10 px
+    bindsym l resize grow width 10 px
 
-# --- WINDOW RULES ---
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [app_id="pavucontrol"] floating enable, resize set 700 500, move position center
+    bindsym Left resize shrink width 10 px
+    bindsym Down resize grow height 10 px
+    bindsym Up resize shrink height 10 px
+    bindsym Right resize grow width 10 px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# ------------------------------------------------------------------------------
+# 5. HARDWARE KEYS (THINKPAD X1 YOGA GEN 4)
+# ------------------------------------------------------------------------------
+# Audio Control (PipeWire / WirePlumber / wpctl)
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+# Display Brightness Control (brightnessctl)
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# Media Control
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshots (grim + slurp + wl-copy)
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Shift+Print exec grim ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png
+
+# ------------------------------------------------------------------------------
+# 6. AUTOSTART & BACKGROUND SERVICES
+# ------------------------------------------------------------------------------
+exec waybar
+exec mako
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 1e1e2e' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f -c 1e1e2e'
