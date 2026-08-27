@@ -13,7 +13,10 @@
     enable = true;
   };
 
- 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    };
+
 xdg.configFile."sway".source = ./dotfiles/sway;
   xdg.configFile."kitty".source = ./dotfiles/kitty;
   xdg.configFile."nwg-panel".source = ./dotfiles/nwg-panel;
