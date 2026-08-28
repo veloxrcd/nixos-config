@@ -10,30 +10,29 @@ set $browser zen
 output * bg /home/mo/Downloads/hollow.jpg fill
 
 # ==========================================
-# 2. SWAYFX VISUALS & ANIMATIONS
+# 2. SWAYFX VISUALS & BORDERS
 # ==========================================
-# Enable SwayFX Animations & Duratio
+# Animations
 animation_duration_ms 150
 
-# Corner Rounding
+# Enable Corner Rounding
 corner_radius 12
 
-# Shadows
+# Enable Shadows & Blur
 shadows enable
 shadow_color #000000AA
 
-# Blur
 blur enable
 blur_passes 3
 blur_radius 5
 
-# Gaps & Borders
+# Remove titlebars from Kitty and windows
+default_border none
+default_floating_border normal 2
+
+# Gaps
 gaps inner 10
 gaps outer 5
-default_border normal 2
-default_floating_border normal 2
-smart_gaps on
-smart_borders on
 
 # ==========================================
 # 3. KEYBINDINGS
@@ -75,12 +74,12 @@ bindsym $mod+Shift+4 move container to workspace number 4
 bindsym $mod+Shift+5 move container to workspace number 5
 
 # ==========================================
-# 4. SCREENSHOT BINDINGS (GRIM + SLURP)
+# 4. SCREENSHOT BINDINGS
 # ==========================================
 bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 
 # ==========================================
-# 5. AUTOSTART DAEMONS
+# 5. AUTOSTART WAYBAR
 # ==========================================
-exec waybar
+exec_always pkill waybar; waybar
