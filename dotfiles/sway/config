@@ -7,13 +7,13 @@ set $filemanager kitty -e yazi
 set $browser zen
 
 # Output configuration
-output * bg /home/mo/Downloads/hollow.jpg fill
+output * bg ~/Downloads/hollow.jpg fill
 
 # ==========================================
 # 2. SWAYFX VISUALS & BORDERS
 # ==========================================
 # Animations
-animation_duration_ms 150
+animation_duration_ms 200
 
 # Enable Corner Rounding
 corner_radius 12
@@ -80,6 +80,7 @@ bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +'%Y-
 bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 
 # ==========================================
-# 5. AUTOSTART WAYBAR
+# 5. AUTOSTART DAEMONS
 # ==========================================
 exec_always pkill waybar; waybar
+exec_always pkill autotiling; autotiling
