@@ -5,6 +5,9 @@ set $mod Mod4
 set $term kitty
 set $filemanager kitty -e yazi
 set $browser zen
+set $menu rofi -show drun
+set $emoji rofimoji
+set $locker swaylock
 
 # Output configuration
 output * bg ~/Downloads/hollow.jpg fill
@@ -13,7 +16,7 @@ output * bg ~/Downloads/hollow.jpg fill
 # 2. SWAYFX VISUALS & BORDERS
 # ==========================================
 # Animations
-animation_duration_ms 200
+animation_duration_ms 150
 
 # Enable Corner Rounding
 corner_radius 12
@@ -40,6 +43,9 @@ gaps outer 5
 bindsym $mod+Return exec $term
 bindsym $mod+e exec $filemanager
 bindsym $mod+w exec $browser
+bindsym $mod+d exec $menu
+bindsym $mod+period exec $emoji
+bindsym $mod+Escape exec $locker
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
