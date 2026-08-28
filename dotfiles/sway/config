@@ -7,7 +7,7 @@ set $filemanager kitty -e yazi
 set $browser zen
 
 # Output configuration
-output * bg /home/mo/Pictures/wallpapers/storm.jpg fill
+output * bg /home/mo/Downloads/hollow.jpg fill
 
 # ==========================================
 # 2. SWAYFX VISUALS & ANIMATIONS
