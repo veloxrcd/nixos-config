@@ -30,8 +30,9 @@ set $float_stagger bash -c ' \
 # ==========================================
 # 2. SWAYFX VISUALS & MONOCHROME BORDERS
 # ==========================================
-default_border pixel 2
-default_floating_border pixel 2
+# Ultra-thin 1px borders
+default_border pixel 1
+default_floating_border pixel 1
 smart_borders on
 smart_gaps on
 
@@ -52,10 +53,11 @@ blur_radius 3
 
 animation_duration_ms 150
 
-# --- MONOCHROME WINDOW COLORS ---
+# --- MONOCHROME WINDOW COLORS (Thin White Focused Borders) ---
+# Class                 Border  BG      Text    Indicator Child_Border
 client.focused          #ffffff #0b0b0b #ffffff #ffffff    #ffffff
-client.focused_inactive #333333 #0b0b0b #888888 #333333    #333333
-client.unfocused        #1a1a1a #0b0b0b #555555 #1a1a1a    #1a1a1a
+client.focused_inactive #222222 #0b0b0b #888888 #222222    #222222
+client.unfocused        #111111 #0b0b0b #555555 #111111    #111111
 client.urgent           #ffffff #222222 #ffffff #ffffff    #ffffff
 client.placeholder      #000000 #0c0c0c #ffffff #000000    #000000
 
