@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     min-height: 0;
 }
@@ -11,18 +11,16 @@ window#waybar {
     background: transparent;
 }
 
-/* Floating Center Capsule */
 .modules-center {
     background: #0b0b0b;
     border: 1px solid #1a1a1a;
-    border-radius: 12px;
-    padding: 3px 12px;
+    border-radius: 14px;
+    padding: 4px 14px;
 }
 
-/* Workspace Buttons */
 #workspaces button {
-    padding: 2px 8px;
-    margin: 0 2px;
+    padding: 3px 10px;
+    margin: 0 3px;
     color: #777777;
     background: transparent;
     border-radius: 8px;
@@ -39,23 +37,20 @@ window#waybar {
     color: #ffffff;
 }
 
-/* Standard Modules */
 #clock, #network, #bluetooth, #pulseaudio, #battery, #tray {
     padding: 0 8px;
     color: #e0e0e0;
 }
 
-/* Clock Separation Divider */
 #clock {
     color: #ffffff;
     font-weight: bold;
     border-left: 1px solid #222222;
     border-right: 1px solid #222222;
-    margin: 0 6px;
-    padding: 0 10px;
+    margin: 0 8px;
+    padding: 0 12px;
 }
 
-/* Clickable Status Highlights */
 #network:hover, #bluetooth:hover, #pulseaudio:hover, #battery:hover {
     color: #ffffff;
 }

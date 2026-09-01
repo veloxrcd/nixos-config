@@ -1,26 +1,26 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 38,
-    "modules-left": [],
-    "modules-center": [
-        "sway/workspaces",
-        "clock",
-        "bluetooth",
-        "network",
-        "pulseaudio",
-        "battery"
-    ],
-    "modules-right": [],
-
+    "height": 34,
+    "margin-top": 6,
+    "margin-bottom": 0,
+    "modules-center": ["sway/workspaces", "clock", "network", "bluetooth", "pulseaudio", "battery", "tray"],
+    
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}"
     },
     "clock": {
-        "format": "󰥔 {:%H:%M}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%Y-%m-%d}"
+    },
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{essid} ({ifname} via {gwaddr})",
+        "max-length": 20
     },
     "bluetooth": {
         "format": "󰂯",
@@ -31,32 +31,23 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager"
     },
-    "network": {
-        "format-wifi": "󰤨",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭",
-        "tooltip-format": "{ifname} via {gwaddr}\nSignal: {signalStrength}%"
-    },
     "pulseaudio": {
         "format": "{icon}",
         "format-muted": "󰝟",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "tooltip-format": "Volume: {volume}%",
-        "on-click": "pavucontrol",
-        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "scroll-step": 5
+        "tooltip-format": "{volume}%",
+        "on-click": "pavucontrol"
     },
     "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
         "format": "{icon}",
-        "format-charging": "󰂄",
-        "format-plugged": "󰚥",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "tooltip-format": "Battery: {capacity}%\nTime remaining: {timeTo}"
+        "format-charging": "󰂄",
+        "tooltip-format": "{capacity}%"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
     }
 }
