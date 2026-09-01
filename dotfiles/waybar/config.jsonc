@@ -1,53 +1,62 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "spacing": 4,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+    "height": 32,
+    "modules-left": [],
+    "modules-center": [
+        "sway/workspaces",
+        "clock",
+        "bluetooth",
+        "network",
+        "pulseaudio",
+        "battery"
+    ],
+    "modules-right": [],
 
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}"
     },
-    "sway/scratchpad": {
-        "format": "   {count}",
-        "show-empty": false
-    },
     "clock": {
-        "format": "󰥔 {:%H:%M  %a %b %d}",
+        "format": "󰥔 {:%H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{ifname} via {gwaddr}\nSignal: {signalStrength}%"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "tooltip-format": "Volume: {volume}%",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5
     },
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󰚥 {capacity}%",
+        "format": "{icon}",
+        "format-charging": "󰂄",
+        "format-plugged": "󰚥",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "tooltip-format": "{timeTo}"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟 Muted",
-        "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "scroll-step": 5
-    },
-    "network": {
-        "format-wifi": "󰤨  {signalStrength}%",
-        "format-ethernet": "󰈀  {ipaddr}",
-        "format-disconnected": "󰤭  Offline",
-        "tooltip-format": "{ifname} via {gwaddr}"
-    },
-    "tray": {
-        "spacing": 10
+        "tooltip-format": "Battery: {capacity}%\nTime remaining: {timeTo}"
     }
 }

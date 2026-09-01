@@ -1,10 +1,9 @@
 /* ==============================================================================
-# WAYBAR CATPPUCCIN MOCHA FLOATING BUBBLES
+# WAYBAR CATPPUCCIN MOCHA CENTERED PILL
 # Location: dotfiles/waybar/style.css
 # Font: Iosevka Nerd Font
 # ============================================================================== */
 
-/* Reset & Global Settings */
 * {
     border: none;
     border-radius: 0;
@@ -14,44 +13,31 @@
     min-height: 0;
 }
 
-/* ------------------------------------------------------------------------------
- * MAIN BAR CONTAINER (Invisible Track)
- * ------------------------------------------------------------------------------ */
 window#waybar {
     background-color: transparent;
     color: #cdd6f4;
 }
 
 /* ------------------------------------------------------------------------------
- * BUBBLE CONTAINERS (Left, Center, Right Islands)
+ * SINGLE CENTERED OVAL CONTAINER
  * ------------------------------------------------------------------------------ */
-.modules-left,
-.modules-center,
-.modules-right {
-    background-color: #1e1e2e; /* Catppuccin Base */
-    border: 2px solid #313244;  /* Catppuccin Surface0 */
-    border-radius: 12px;
-    padding: 2px 8px;
+.modules-center {
+    background-color: #1e1e2e; /* Base */
+    border: 2px solid #313244;  /* Surface0 */
+    border-radius: 20px;
+    padding: 3px 12px;
     margin-top: 6px;
     margin-bottom: 2px;
 }
 
-.modules-left {
-    margin-left: 10px;
-}
-
-.modules-right {
-    margin-right: 10px;
-}
-
 /* ------------------------------------------------------------------------------
- * WORKSPACES (Sway Native)
+ * WORKSPACES
  * ------------------------------------------------------------------------------ */
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 7px;
     color: #6c7086; /* Overlay0 */
     background: transparent;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -62,47 +48,65 @@ window#waybar {
 
 #workspaces button.focused {
     color: #1e1e2e;
-    background-color: #89b4fa; /* Catppuccin Blue */
+    background-color: #89b4fa; /* Blue */
 }
 
 #workspaces button.urgent {
     color: #1e1e2e;
-    background-color: #f38ba8; /* Catppuccin Red */
+    background-color: #f38ba8; /* Red */
 }
 
 /* ------------------------------------------------------------------------------
- * MODULE STYLES & SPACING
+ * CLOCK (Separated with subtle borders)
  * ------------------------------------------------------------------------------ */
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #cdd6f4;
-}
-
-/* Accent Module Highlights */
 #clock {
     color: #cba6f7; /* Mauve */
+    padding: 0 10px;
+    margin: 0 6px;
+    border-left: 1px solid #313244;
+    border-right: 1px solid #313244;
+}
+
+/* ------------------------------------------------------------------------------
+ * STATUS ICONS
+ * ------------------------------------------------------------------------------ */
+#bluetooth,
+#network,
+#pulseaudio,
+#battery {
+    padding: 0 6px;
+}
+
+#bluetooth {
+    color: #89b4fa; /* Blue */
+}
+
+#bluetooth.disabled {
+    color: #6c7086; /* Overlay0 */
+}
+
+#network {
+    color: #f9e2af; /* Yellow */
+}
+
+#network.disconnected {
+    color: #f38ba8; /* Red */
+}
+
+#pulseaudio {
+    color: #89dceb; /* Sky */
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
 }
 
 #battery {
     color: #a6e3a1; /* Green */
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging, 
+#battery.plugged {
     color: #a6e3a1;
 }
 
@@ -117,32 +121,4 @@ window#waybar {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-#pulseaudio {
-    color: #89b4fa; /* Blue */
-}
-
-#pulseaudio.muted {
-    color: #6c7086;
-}
-
-#network {
-    color: #f9e2af; /* Yellow */
-}
-
-#network.disconnected {
-    color: #f38ba8;
-}
-
-#tray {
-    padding-right: 8px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
 }
