@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 26,
-    "margin-top": 4,
+    "height": 28,
+    "margin-top": 5,
     "margin-bottom": 0,
     "modules-center": ["sway/workspaces", "clock", "network", "bluetooth", "pulseaudio", "battery", "tray"],
     
@@ -16,37 +16,35 @@
         "tooltip-format": "{:%Y-%m-%d}"
     },
     "network": {
-        "format-wifi": "󰤨",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭",
-        "tooltip-format": "{essid} ({ifname} via {gwaddr})"
+        "format-wifi": "\uf1eb",
+        "format-ethernet": "\uf796",
+        "format-disconnected": "\uf071",
+        "tooltip-format": "{essid} ({ifname})"
     },
     "bluetooth": {
-        "format": "󰂯",
-        "format-disabled": "󰂲",
-        "format-connected": "󰂱",
+        "format": "\uf293",
+        "format-disabled": "\uf294",
+        "format-connected": "\uf293",
         "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager"
     },
     "pulseaudio": {
         "format": "{icon}",
-        "format-muted": "󰝟",
+        "format-muted": "\uf6a9",
         "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
+            "default": ["\uf026", "\uf027", "\uf028"]
         },
         "tooltip-format": "{volume}%",
         "on-click": "pavucontrol"
     },
     "battery": {
         "format": "{icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "format-charging": "󰂄",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+        "format-charging": "\uf0e7",
         "tooltip-format": "{capacity}%"
     },
     "tray": {
-        "icon-size": 12,
+        "icon-size": 13,
         "spacing": 8
     }
 }
