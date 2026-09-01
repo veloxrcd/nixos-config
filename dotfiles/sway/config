@@ -36,10 +36,10 @@ smart_borders on
 smart_gaps on
 
 gaps inner 8
-gaps outer top 2
-gaps outer bottom 2
-gaps outer left 4
-gaps outer right 4
+gaps top 2
+gaps bottom 2
+gaps left 4
+gaps right 4
 
 corner_radius 10
 
