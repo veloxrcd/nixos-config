@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Iosevka Nerd Font", "Font Awesome 6 Free";
+    font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
     font-size: 11px;
     font-weight: 600;
     min-height: 0;
@@ -11,20 +11,22 @@ window#waybar {
     background: transparent;
 }
 
-/* Center Floating Pill without Outer Border */
+/* Floating Center Capsule */
 .modules-center {
     background: #0b0b0b;
-    border: none;
-    border-radius: 14px;
-    padding: 2px 10px;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 3px 12px;
 }
 
-/* Workspaces */
+/* Workspace Buttons */
 #workspaces button {
-    padding: 0 6px;
-    color: #888888;
+    padding: 2px 8px;
+    margin: 0 2px;
+    color: #777777;
     background: transparent;
-    border-radius: 10px;
+    border-radius: 8px;
+    transition: all 0.15s ease-in-out;
 }
 
 #workspaces button.focused {
@@ -33,21 +35,27 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: #222222;
+    background: #1e1e1e;
     color: #ffffff;
 }
 
-/* Module Styling */
-#clock, #tray, #pulseaudio, #battery {
-    padding: 0 6px;
-    color: #ffffff;
+/* Standard Modules */
+#clock, #network, #bluetooth, #pulseaudio, #battery, #tray {
+    padding: 0 8px;
+    color: #e0e0e0;
 }
 
+/* Clock Separation Divider */
 #clock {
-    font-size: 11px;
+    color: #ffffff;
     font-weight: bold;
     border-left: 1px solid #222222;
     border-right: 1px solid #222222;
-    margin: 0 4px;
-    padding: 0 8px;
+    margin: 0 6px;
+    padding: 0 10px;
+}
+
+/* Clickable Status Highlights */
+#network:hover, #bluetooth:hover, #pulseaudio:hover, #battery:hover {
+    color: #ffffff;
 }
