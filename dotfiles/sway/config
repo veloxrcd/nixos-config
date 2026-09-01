@@ -1,3 +1,8 @@
+# ==============================================================================
+# SWAY / SWAYFX MONOCHROME CONFIG
+# Location: dotfiles/sway/config
+# ==============================================================================
+
 # ==========================================
 # 1. CONSTANTS & VARS
 # ==========================================
@@ -10,32 +15,49 @@ set $emoji rofimoji
 set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh
 
 # Output configuration
-output * bg ~/Downloads/hollow.jpg fill
+output * bg ~/Downloads/rm-rf.jpg fill
+
+# Custom floating layout toggle script (Top-left-ish vs Bottom-right-ish)
+set $float_stagger bash -c ' \
+  COUNT=$(swaymsg -t get_tree | jq "[.. | objects | select(.focused == true)] | .[0] | .workspace" | xargs -I {} swaymsg -t get_tree | jq "[.. | objects | select(.type? == \"workspace\" and .id == {})] | .[0] | [.. | objects | select(.floating == \"auto_on\" or .floating == \"user_on\")] | length"); \
+  if [ "$COUNT" -eq 0 ]; then \
+    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 10ppt 10ppt"; \
+  else \
+    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 45ppt 45ppt"; \
+  fi \
+'
 
 # ==========================================
-# 2. SWAYFX VISUALS & BORDERS
+# 2. SWAYFX VISUALS & MONOCHROME BORDERS
 # ==========================================
-# Animations
-animation_duration_ms 200
+default_border pixel 2
+default_floating_border pixel 2
+smart_borders on
+smart_gaps on
 
-# Enable Corner Rounding
-corner_radius 12
+gaps inner 8
+gaps outer top 2
+gaps outer bottom 2
+gaps outer left 4
+gaps outer right 4
 
-# Enable Shadows & Blur
+corner_radius 10
+
 shadows enable
-shadow_color #000000AA
+shadow_color #000000cc
 
 blur enable
-blur_passes 3
-blur_radius 5
+blur_passes 2
+blur_radius 3
 
-# Remove titlebars from Kitty and windows
-default_border none
-default_floating_border normal 2
+animation_duration_ms 150
 
-# Gaps
-gaps inner 10
-gaps outer 5
+# --- MONOCHROME WINDOW COLORS ---
+client.focused          #ffffff #0b0b0b #ffffff #ffffff    #ffffff
+client.focused_inactive #333333 #0b0b0b #888888 #333333    #333333
+client.unfocused        #1a1a1a #0b0b0b #555555 #1a1a1a    #1a1a1a
+client.urgent           #ffffff #222222 #ffffff #ffffff    #ffffff
+client.placeholder      #000000 #0c0c0c #ffffff #000000    #000000
 
 # ==========================================
 # 3. KEYBINDINGS
@@ -62,9 +84,12 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # Layout Controls
+bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+f fullscreen toggle
-bindsym $mod+space floating toggle
+bindsym $mod+space exec $float_stagger
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+a focus parent
 
 # Workspaces
 bindsym $mod+1 workspace number 1
@@ -89,11 +114,19 @@ bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
-# ==========================================
-# 4. SCREENSHOT BINDINGS
-# ==========================================
+# Screenshots
 bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
 bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
+
+# ==========================================
+# 4. WINDOW RULES & FLOATING DIALOGS
+# ==========================================
+for_window [app_id=".*"] title_format "%title"
+for_window [app_id="pavucontrol"] floating enable, resize set 650 400
+for_window [app_id="blueman-manager"] floating enable, resize set 600 400
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
 
 # ==========================================
 # 5. AUTOSTART DAEMONS

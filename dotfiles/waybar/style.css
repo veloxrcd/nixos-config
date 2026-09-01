@@ -1,5 +1,5 @@
 /* ==============================================================================
-# WAYBAR CATPPUCCIN MOCHA CENTERED PILL (MONOCHROME / LARGER)
+# WAYBAR MONOCHROME BLACK & WHITE CENTERED PILL
 # Location: dotfiles/waybar/style.css
 # Font: Iosevka Nerd Font
 # ============================================================================== */
@@ -15,15 +15,15 @@
 
 window#waybar {
     background-color: transparent;
-    color: #bac2de;
+    color: #ffffff;
 }
 
 /* ------------------------------------------------------------------------------
- * SINGLE CENTERED OVAL CONTAINER
+ * SINGLE CENTERED OVAL CONTAINER (BLACK BACKGROUND & WHITE BORDER)
  * ------------------------------------------------------------------------------ */
 .modules-center {
-    background-color: #1e1e2e;
-    border: 2px solid #313244;
+    background-color: #0b0b0b;
+    border: 2px solid #333333;
     border-radius: 22px;
     padding: 4px 16px;
     margin-top: 6px;
@@ -35,37 +35,37 @@ window#waybar {
  * ------------------------------------------------------------------------------ */
 #workspaces button {
     padding: 0 9px;
-    color: #6c7086;
+    color: #666666;
     background: transparent;
     border-radius: 14px;
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: #cdd6f4;
-    background-color: #313244;
+    color: #ffffff;
+    background-color: #222222;
 }
 
 #workspaces button.focused {
-    color: #1e1e2e;
-    background-color: #cdd6f4;
+    color: #000000;
+    background-color: #ffffff;
 }
 
 #workspaces button.urgent {
-    color: #1e1e2e;
-    background-color: #f38ba8;
+    color: #ffffff;
+    background-color: #444444;
 }
 
 /* ------------------------------------------------------------------------------
  * CLOCK
  * ------------------------------------------------------------------------------ */
 #clock {
-    color: #cdd6f4;
+    color: #ffffff;
     font-size: 16px;
     padding: 0 12px;
     margin: 0 8px;
-    border-left: 2px solid #313244;
-    border-right: 2px solid #313244;
+    border-left: 2px solid #333333;
+    border-right: 2px solid #333333;
 }
 
 /* ------------------------------------------------------------------------------
@@ -76,22 +76,22 @@ window#waybar {
 #pulseaudio,
 #battery {
     padding: 0 8px;
-    color: #bac2de;
+    color: #dddddd;
     font-size: 16px;
 }
 
 #bluetooth.disabled,
 #network.disconnected,
 #pulseaudio.muted {
-    color: #585b70;
+    color: #444444;
 }
 
 #battery.warning:not(.charging) {
-    color: #fab387;
+    color: #aaaaaa;
 }
 
 #battery.critical:not(.charging) {
-    color: #f38ba8;
+    color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
