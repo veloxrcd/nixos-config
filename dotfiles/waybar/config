@@ -13,39 +13,35 @@
     },
     "clock": {
         "format": "{:%H:%M}",
-        "tooltip": false
+        "tooltip-format": "{:%Y-%m-%d}"
     },
     "network": {
-        "format": "󰤨",
+        "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
         "format-disconnected": "󰤭",
-        "format-alt": "󰤨  {essid}",
-        "tooltip": false
+        "tooltip-format": "{essid}"
     },
     "bluetooth": {
         "format": "󰂯",
         "format-disabled": "󰂲",
         "format-connected": "󰂱",
-        "format-alt": "󰂯  {status}",
-        "tooltip": false,
+        "tooltip-format": "{status}",
         "on-click": "blueman-manager"
     },
     "pulseaudio": {
         "format": "{icon}",
         "format-muted": "󰝟",
-        "format-alt": "{icon}  {volume}%",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "tooltip": false,
+        "tooltip-format": "{volume}%",
         "on-click": "pavucontrol"
     },
     "battery": {
         "format": "{icon}",
         "format-charging": "󰂄",
-        "format-alt": "{icon}  {capacity}%",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "tooltip": false
+        "tooltip-format": "{capacity}%"
     },
     "tray": {
         "icon-size": 13,

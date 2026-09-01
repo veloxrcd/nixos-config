@@ -38,9 +38,8 @@ window#waybar {
 }
 
 #clock, #network, #bluetooth, #pulseaudio, #battery, #tray {
-    padding: 0 6px;
+    padding: 0 8px;
     color: #e0e0e0;
-    transition: all 0.2s ease-in-out;
 }
 
 #clock {
@@ -52,17 +51,21 @@ window#waybar {
     padding: 0 10px;
 }
 
-/* Hover reveal effect for percentage & status text */
 #network:hover, #bluetooth:hover, #pulseaudio:hover, #battery:hover {
     color: #ffffff;
     background: #161616;
     border-radius: 6px;
-    padding: 0 10px;
 }
 
-/* Disable standard Waybar tooltips entirely */
+/* Minimal dark monochrome hover tooltip card */
 tooltip {
-    background: transparent;
-    border: none;
-    opacity: 0;
+    background: #0b0b0b;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 8px;
 }
