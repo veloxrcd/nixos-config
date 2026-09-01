@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 28,
+    "height": 31,
     "margin-top": 5,
     "margin-bottom": 0,
     "modules-center": ["sway/workspaces", "clock", "network", "bluetooth", "pulseaudio", "battery", "tray"],
@@ -44,7 +44,7 @@
         "tooltip-format": "{capacity}%"
     },
     "tray": {
-        "icon-size": 13,
+        "icon-size": 14,
         "spacing": 8
     }
 }

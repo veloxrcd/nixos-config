@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     min-height: 0;
 }
@@ -14,16 +14,16 @@ window#waybar {
 .modules-center {
     background: #0b0b0b;
     border: 1px solid #1a1a1a;
-    border-radius: 12px;
-    padding: 3px 12px;
+    border-radius: 10px;
+    padding: 2px 10px;
 }
 
 #workspaces button {
-    padding: 2px 8px;
+    padding: 1px 8px;
     margin: 0 2px;
     color: #777777;
     background: transparent;
-    border-radius: 8px;
+    border-radius: 6px;
     transition: all 0.15s ease-in-out;
 }
 
@@ -54,10 +54,9 @@ window#waybar {
 #network:hover, #bluetooth:hover, #pulseaudio:hover, #battery:hover {
     color: #ffffff;
     background: #161616;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
-/* Minimal dark monochrome hover tooltip card */
 tooltip {
     background: #0b0b0b;
     border: 1px solid #1a1a1a;
@@ -66,6 +65,6 @@ tooltip {
 
 tooltip label {
     color: #ffffff;
-    font-size: 11px;
+    font-size: 12px;
     padding: 4px 8px;
 }
