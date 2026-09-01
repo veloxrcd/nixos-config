@@ -39,6 +39,7 @@ nix.gc = {
 boot.supportedFilesystems = [ "btrfs" ];
 hardware.graphics.enable = true;
 boot.kernelPackages = pkgs.linuxPackages_latest;
+hardware.bluetooth.enable = true;
 
   users.users.mo = {
     isNormalUser = true;
