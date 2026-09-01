@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 34,
-    "margin-top": 6,
+    "height": 26,
+    "margin-top": 4,
     "margin-bottom": 0,
     "modules-center": ["sway/workspaces", "clock", "network", "bluetooth", "pulseaudio", "battery", "tray"],
     
@@ -19,8 +19,7 @@
         "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
         "format-disconnected": "󰤭",
-        "tooltip-format": "{essid} ({ifname} via {gwaddr})",
-        "max-length": 20
+        "tooltip-format": "{essid} ({ifname} via {gwaddr})"
     },
     "bluetooth": {
         "format": "󰂯",
@@ -47,7 +46,7 @@
         "tooltip-format": "{capacity}%"
     },
     "tray": {
-        "icon-size": 14,
-        "spacing": 10
+        "icon-size": 12,
+        "spacing": 8
     }
 }
