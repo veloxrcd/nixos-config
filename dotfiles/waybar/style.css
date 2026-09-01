@@ -1,5 +1,5 @@
 /* ==============================================================================
-# WAYBAR CATPPUCCIN MOCHA CENTERED PILL
+# WAYBAR CATPPUCCIN MOCHA CENTERED PILL (MONOCHROME / LARGER)
 # Location: dotfiles/waybar/style.css
 # Font: Iosevka Nerd Font
 # ============================================================================== */
@@ -8,24 +8,24 @@
     border: none;
     border-radius: 0;
     font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     min-height: 0;
 }
 
 window#waybar {
     background-color: transparent;
-    color: #cdd6f4;
+    color: #bac2de;
 }
 
 /* ------------------------------------------------------------------------------
  * SINGLE CENTERED OVAL CONTAINER
  * ------------------------------------------------------------------------------ */
 .modules-center {
-    background-color: #1e1e2e; /* Base */
-    border: 2px solid #313244;  /* Surface0 */
-    border-radius: 20px;
-    padding: 3px 12px;
+    background-color: #1e1e2e;
+    border: 2px solid #313244;
+    border-radius: 22px;
+    padding: 4px 16px;
     margin-top: 6px;
     margin-bottom: 2px;
 }
@@ -34,10 +34,10 @@ window#waybar {
  * WORKSPACES
  * ------------------------------------------------------------------------------ */
 #workspaces button {
-    padding: 0 7px;
-    color: #6c7086; /* Overlay0 */
+    padding: 0 9px;
+    color: #6c7086;
     background: transparent;
-    border-radius: 12px;
+    border-radius: 14px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -48,74 +48,50 @@ window#waybar {
 
 #workspaces button.focused {
     color: #1e1e2e;
-    background-color: #89b4fa; /* Blue */
+    background-color: #cdd6f4;
 }
 
 #workspaces button.urgent {
     color: #1e1e2e;
-    background-color: #f38ba8; /* Red */
+    background-color: #f38ba8;
 }
 
 /* ------------------------------------------------------------------------------
- * CLOCK (Separated with subtle borders)
+ * CLOCK
  * ------------------------------------------------------------------------------ */
 #clock {
-    color: #cba6f7; /* Mauve */
-    padding: 0 10px;
-    margin: 0 6px;
-    border-left: 1px solid #313244;
-    border-right: 1px solid #313244;
+    color: #cdd6f4;
+    font-size: 16px;
+    padding: 0 12px;
+    margin: 0 8px;
+    border-left: 2px solid #313244;
+    border-right: 2px solid #313244;
 }
 
 /* ------------------------------------------------------------------------------
- * STATUS ICONS
+ * MONOCHROME STATUS ICONS
  * ------------------------------------------------------------------------------ */
 #bluetooth,
 #network,
 #pulseaudio,
 #battery {
-    padding: 0 6px;
+    padding: 0 8px;
+    color: #bac2de;
+    font-size: 16px;
 }
 
-#bluetooth {
-    color: #89b4fa; /* Blue */
-}
-
-#bluetooth.disabled {
-    color: #6c7086; /* Overlay0 */
-}
-
-#network {
-    color: #f9e2af; /* Yellow */
-}
-
-#network.disconnected {
-    color: #f38ba8; /* Red */
-}
-
-#pulseaudio {
-    color: #89dceb; /* Sky */
-}
-
+#bluetooth.disabled,
+#network.disconnected,
 #pulseaudio.muted {
-    color: #6c7086;
-}
-
-#battery {
-    color: #a6e3a1; /* Green */
-}
-
-#battery.charging, 
-#battery.plugged {
-    color: #a6e3a1;
+    color: #585b70;
 }
 
 #battery.warning:not(.charging) {
-    color: #fab387; /* Peach */
+    color: #fab387;
 }
 
 #battery.critical:not(.charging) {
-    color: #f38ba8; /* Red */
+    color: #f38ba8;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
