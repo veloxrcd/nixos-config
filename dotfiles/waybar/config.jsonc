@@ -16,9 +16,12 @@
         "tooltip-format": "{:%Y-%m-%d}"
     },
     "network": {
+        "format": "\uf1eb",
         "format-wifi": "\uf1eb",
         "format-ethernet": "\uf796",
+        "format-linked": "\uf796",
         "format-disconnected": "\uf071",
+        "format-disabled": "\uf071",
         "tooltip-format": "{essid} ({ifname})"
     },
     "bluetooth": {
@@ -30,8 +33,16 @@
     },
     "pulseaudio": {
         "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": "\uf6a9",
         "format-muted": "\uf6a9",
         "format-icons": {
+            "headphone": "\uf025",
+            "hands-free": "\uf025",
+            "headset": "\uf025",
+            "phone": "\uf095",
+            "portable": "\uf095",
+            "car": "\uf1b9",
             "default": ["\uf026", "\uf027", "\uf028"]
         },
         "tooltip-format": "{volume}%",
@@ -39,8 +50,10 @@
     },
     "battery": {
         "format": "{icon}",
-        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
         "format-charging": "\uf0e7",
+        "format-plugged": "\uf1e6",
+        "format-alt": "{icon}",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
         "tooltip-format": "{capacity}%"
     },
     "tray": {
