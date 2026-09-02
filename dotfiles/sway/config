@@ -25,10 +25,6 @@ set $float_stagger ~/nixos-config/dotfiles/sway/float_stagger.sh
 # Super + Right Click Drag = Resize floating window
 floating_modifier $mod normal
 
-# Click anywhere on window while holding Super to float + move/resize
-bindsym --whole-window $mod+button1 floating toggle
-bindsym --whole-window $mod+button3 floating toggle
-
 # ==========================================
 # 2. SWAYFX VISUALS & MONOCHROME BORDERS
 # ==========================================
