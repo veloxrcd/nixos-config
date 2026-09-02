@@ -1,6 +1,6 @@
 # ==============================================================================
 # SWAY / SWAYFX MONOCHROME CONFIG
-# Location: dotfiles/sway/config
+# Location: ~/nixos-config/dotfiles/sway/config
 # ==============================================================================
 
 # ==========================================
@@ -17,15 +17,28 @@ set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh
 # Output configuration
 output * bg ~/Downloads/rm-rf.jpg fill
 
-# Custom floating layout toggle script (Top-left-ish vs Bottom-right-ish)
+# Custom floating layout toggle script (Top-left vs Bottom-right)
 set $float_stagger bash -c ' \
-  COUNT=$(swaymsg -t get_tree | jq "[.. | objects | select(.focused == true)] | .[0] | .workspace" | xargs -I {} swaymsg -t get_tree | jq "[.. | objects | select(.type? == \"workspace\" and .id == {})] | .[0] | [.. | objects | select(.floating == \"auto_on\" or .floating == \"user_on\")] | length"); \
-  if [ "$COUNT" -eq 0 ]; then \
-    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 10ppt 10ppt"; \
+  FOCUSED_TREE=$(swaymsg -t get_tree); \
+  FLOATING_STATE=$(echo "$FOCUSED_TREE" | jq -r ".. | objects | select(.focused? == true) | .floating"); \
+  if [ "$FLOATING_STATE" = "user_on" ] || [ "$FLOATING_STATE" = "auto_on" ]; then \
+    X_POS=$(echo "$FOCUSED_TREE" | jq -r ".. | objects | select(.focused? == true) | .rect.x"); \
+    if [ "$X_POS" -lt 300 ]; then \
+      swaymsg "move position 45ppt 45ppt"; \
+    else \
+      swaymsg "move position 10ppt 10ppt"; \
+    fi \
   else \
-    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 45ppt 45ppt"; \
+    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 10ppt 10ppt"; \
   fi \
 '
+
+# Floating modifier for moving and resizing windows
+floating_modifier $mod normal
+
+# Super + LMB to move / Super + RMB to resize (switches tiled windows to floating and lets you drag)
+bindsym --whole-window $mod+button1 floating enable; move
+bindsym --whole-window $mod+button3 floating enable; resize
 
 # ==========================================
 # 2. SWAYFX VISUALS & MONOCHROME BORDERS
