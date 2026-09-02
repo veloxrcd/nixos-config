@@ -17,28 +17,8 @@ set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh
 # Output configuration
 output * bg ~/Downloads/rm-rf.jpg fill
 
-# Custom floating layout toggle script (Moves BOTH floating windows to Top-Left & Bottom-Right)
-set $float_stagger bash -c ' \
-  FOCUSED_ID=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | .id'); \
-  FLOATING_IDS=$(swaymsg -t get_tree | jq -r '.. | select(.type? == "workspace" and (.focus | length > 0)) | .. | select(.floating? == "user_on" or .floating? == "auto_on") | .id' | head -n 2); \
-  ID1=$(echo "$FLOATING_IDS" | head -n 1); \
-  ID2=$(echo "$FLOATING_IDS" | tail -n 1); \
-  if [ -z "$ID1" ]; then \
-    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 5ppt 5ppt"; \
-  elif [ "$ID1" = "$ID2" ] || [ -z "$ID2" ]; then \
-    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 5ppt 5ppt"; \
-  else \
-    FOCUSED_X=$(swaymsg -t get_tree | jq -r ".. | select(.id? == $FOCUSED_ID) | .rect.x"); \
-    SCREEN_MID=$(( $(swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .rect.width' | head -n1) / 2 )); \
-    if [ "$FOCUSED_X" -lt "$SCREEN_MID" ]; then \
-      swaymsg "[con_id=$ID1] floating enable, resize set width 45ppt height 45ppt, move position 50ppt 50ppt"; \
-      swaymsg "[con_id=$ID2] floating enable, resize set width 45ppt height 45ppt, move position 5ppt 5ppt"; \
-    else \
-      swaymsg "[con_id=$ID1] floating enable, resize set width 45ppt height 45ppt, move position 5ppt 5ppt"; \
-      swaymsg "[con_id=$ID2] floating enable, resize set width 45ppt height 45ppt, move position 50ppt 50ppt"; \
-    fi; \
-  fi \
-'
+# Custom floating layout toggle script (Top-Left & Bottom-Right)
+set $float_stagger ~/nixos-config/dotfiles/sway/float_stagger.sh
 
 # Sway native modifier mouse actions:
 # Super + Left Click Drag = Move floating window
@@ -94,7 +74,7 @@ bindsym $mod+period exec $emoji
 bindsym $mod+Escape exec $power_menu
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m "Exit Sway?" -B "Yes" "swaymsg exit"
 
 # Movement (Vim keys)
 bindsym $mod+h focus left
@@ -112,7 +92,7 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+f fullscreen toggle
 bindsym $mod+space exec $float_stagger
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space [workspace="__current__"] floating toggle
 bindsym $mod+a focus parent
 
 # Workspaces
@@ -139,8 +119,8 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Screenshots
-bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
-bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png | wl-copy
+bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy
+bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy
 
 # ==========================================
 # 4. WINDOW RULES & FLOATING DIALOGS
