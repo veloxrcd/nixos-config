@@ -17,18 +17,17 @@ set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh
 # Output configuration
 output * bg ~/Downloads/rm-rf.jpg fill
 
-# Custom floating layout toggle script (Top-Left & Bottom-Right)
+# Custom floating layout toggle script
 set $float_stagger ~/nixos-config/dotfiles/sway/float_stagger.sh
 
-# Sway native modifier mouse actions:
-# Super + Left Click Drag = Move floating window
+# Enable native modifier key for dragging / resizing floating windows:
+# Super + Left Click Drag  = Move floating window
 # Super + Right Click Drag = Resize floating window
 floating_modifier $mod normal
 
 # ==========================================
 # 2. SWAYFX VISUALS & MONOCHROME BORDERS
 # ==========================================
-# Ultra-thin 1px borders
 default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
@@ -51,8 +50,7 @@ blur_radius 3
 
 animation_duration_ms 150
 
-# --- MONOCHROME WINDOW COLORS (Thin White Focused Borders) ---
-# Class                 Border  BG      Text    Indicator Child_Border
+# --- MONOCHROME WINDOW COLORS ---
 client.focused          #ffffff #0b0b0b #ffffff #ffffff    #ffffff
 client.focused_inactive #222222 #0b0b0b #888888 #222222    #222222
 client.unfocused        #111111 #0b0b0b #555555 #111111    #111111
@@ -87,9 +85,18 @@ bindsym $mod+Shift+l move right
 bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+f fullscreen toggle
-bindsym $mod+space exec $float_stagger
-bindsym $mod+Shift+space [workspace="__current__"] floating toggle
 bindsym $mod+a focus parent
+
+# --- FLOATING & SPACE BINDS ---
+# Unbind default sway focus toggle to prevent key collision
+unbindsym $mod+space
+unbindsym $mod+Shift+space
+
+# Stagger floating windows script on Mod+Space
+bindsym $mod+space exec $float_stagger
+
+# Toggle ALL windows on current workspace to floating mode
+bindsym $mod+Shift+space [workspace="__current__"] floating toggle
 
 # Workspaces
 bindsym $mod+1 workspace number 1
