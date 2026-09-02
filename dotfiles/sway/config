@@ -40,14 +40,14 @@ set $float_stagger bash -c ' \
   fi \
 '
 
-# Floating modifier for moving and resizing windows natively
-# Super + Left Click (Hold & Drag) = Move floating window
-# Super + Right Click (Hold & Drag) = Resize floating window
+# Sway native modifier mouse actions:
+# Super + Left Click Drag = Move floating window
+# Super + Right Click Drag = Resize floating window
 floating_modifier $mod normal
 
-# Force tiled windows into floating mode when clicked with Super + LMB / RMB
-bindsym --whole-window $mod+button1 floating enable
-bindsym --whole-window $mod+button3 floating enable
+# Click anywhere on window while holding Super to float + move/resize
+bindsym --whole-window $mod+button1 floating toggle
+bindsym --whole-window $mod+button3 floating toggle
 
 # ==========================================
 # 2. SWAYFX VISUALS & MONOCHROME BORDERS
