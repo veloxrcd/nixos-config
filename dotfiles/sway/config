@@ -88,10 +88,6 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+a focus parent
 
 # --- FLOATING & SPACE BINDS ---
-# Unbind default sway focus toggle to prevent key collision
-unbindsym $mod+space
-unbindsym $mod+Shift+space
-
 # Stagger floating windows script on Mod+Space
 bindsym $mod+space exec $float_stagger
 
