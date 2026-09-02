@@ -1,138 +1,142 @@
-# ==============================================================================
-# SWAY / SWAYFX MONOCHROME CONFIG
-# Location: ~/nixos-config/dotfiles/sway/config
-# ==============================================================================
+# ============================================================================== 
+# SWAY / SWAYFX MONOCHROME CONFIG 
+# Location: dotfiles/sway/config 
+# ============================================================================== 
 
-# ==========================================
-# 1. CONSTANTS & VARS
-# ==========================================
-set $mod Mod4
-set $term kitty
-set $filemanager kitty -e yazi
-set $browser zen
-set $menu rofi -show drun
-set $emoji rofimoji
-set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh
+# ========================================== 
+# 1. CONSTANTS & VARS 
+# ========================================== 
+set $mod Mod4 
+set $term kitty 
+set $filemanager kitty -e yazi 
+set $browser zen 
+set $menu rofi -show drun 
+set $emoji rofimoji 
+set $power_menu ~/nixos-config/dotfiles/rofi/powermenu.sh 
 
-# Output configuration
-output * bg ~/Downloads/rm-rf.jpg fill
+# Output configuration 
+output * bg ~/Downloads/rm-rf.jpg fill 
 
-# Custom floating layout toggle script
-set $float_stagger ~/nixos-config/dotfiles/sway/float_stagger.sh
-
-# Enable native modifier key for dragging / resizing floating windows:
-# Super + Left Click Drag  = Move floating window
-# Super + Right Click Drag = Resize floating window
+# Enable native modifier key for smooth mouse window dragging and resizing
 floating_modifier $mod normal
 
-# ==========================================
-# 2. SWAYFX VISUALS & MONOCHROME BORDERS
-# ==========================================
-default_border pixel 1
-default_floating_border pixel 1
-smart_borders on
-smart_gaps on
+# Custom floating layout toggle script (Top-left-ish vs Bottom-right-ish)
+# Simplified jq query to reliably count active floating windows on the focused workspace
+set $float_stagger bash -c ' \
+  WS=$(swaymsg -t get_tree | jq -r ".. | select(.type? == \"workspace\" and (.focus | length > 0)) | .id" | head -n 1); \
+  COUNT=$(swaymsg -t get_tree | jq "[.. | select(.type? == \"workspace\" and .id == $WS) | .. | select(.type? == \"floating_con\")] | length"); \
+  if [ "$COUNT" -eq 0 ]; then \
+    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 10ppt 10ppt"; \
+  else \
+    swaymsg "floating enable, resize set width 45ppt height 45ppt, move position 45ppt 45ppt"; \
+  fi \
+'
 
-gaps inner 8
-gaps top 2
-gaps bottom 2
-gaps left 4
-gaps right 4
+# ========================================== 
+# 2. SWAYFX VISUALS & MONOCHROME BORDERS 
+# ========================================== 
+# Ultra-thin 1px borders 
+default_border pixel 1 
+default_floating_border pixel 1 
+smart_borders on 
+smart_gaps on 
 
-corner_radius 10
+gaps inner 8 
+gaps top 2 
+gaps bottom 2 
+gaps left 4 
+gaps right 4 
 
-shadows enable
-shadow_color #000000cc
+corner_radius 10 
 
-blur enable
-blur_passes 2
-blur_radius 3
+shadows enable 
+shadow_color #000000cc 
 
-animation_duration_ms 150
+blur enable 
+blur_passes 2 
+blur_radius 3 
 
-# --- MONOCHROME WINDOW COLORS ---
-client.focused          #ffffff #0b0b0b #ffffff #ffffff    #ffffff
-client.focused_inactive #222222 #0b0b0b #888888 #222222    #222222
-client.unfocused        #111111 #0b0b0b #555555 #111111    #111111
-client.urgent           #ffffff #222222 #ffffff #ffffff    #ffffff
-client.placeholder      #000000 #0c0c0c #ffffff #000000    #000000
+animation_duration_ms 150 
 
-# ==========================================
-# 3. KEYBINDINGS
-# ==========================================
-bindsym $mod+Return exec $term
-bindsym $mod+e exec $filemanager
-bindsym $mod+w exec $browser
-bindsym $mod+d exec $menu
-bindsym $mod+period exec $emoji
-bindsym $mod+Escape exec $power_menu
-bindsym $mod+q kill
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m "Exit Sway?" -B "Yes" "swaymsg exit"
+# --- MONOCHROME WINDOW COLORS (Thin White Focused Borders) --- 
+# Class               Border  BG      Text    Indicator Child_Border 
+client.focused          #ffffff #0b0b0b #ffffff #ffffff    #ffffff 
+client.focused_inactive #222222 #0b0b0b #888888 #222222    #222222 
+client.unfocused        #111111 #0b0b0b #555555 #111111    #111111 
+client.urgent           #ffffff #222222 #ffffff #ffffff    #ffffff 
+client.placeholder      #000000 #0c0c0c #ffffff #000000    #000000 
 
-# Movement (Vim keys)
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# ========================================== 
+# 3. KEYBINDINGS 
+# ========================================== 
+bindsym $mod+Return exec $term 
+bindsym $mod+e exec $filemanager 
+bindsym $mod+w exec $browser 
+bindsym $mod+d exec $menu 
+bindsym $mod+period exec $emoji 
+bindsym $mod+Escape exec $power_menu 
+bindsym $mod+q kill 
+bindsym $mod+Shift+c reload 
+bindsym $mod+Shift+e exec swaynag -t warning -m "Exit Sway?" -B "Yes" "swaymsg exit" 
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# Movement (Vim keys) 
+bindsym $mod+h focus left 
+bindsym $mod+j focus down 
+bindsym $mod+k focus up 
+bindsym $mod+l focus right 
 
-# Layout Controls
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+f fullscreen toggle
-bindsym $mod+a focus parent
+bindsym $mod+Shift+h move left 
+bindsym $mod+Shift+j move down 
+bindsym $mod+Shift+k move up 
+bindsym $mod+Shift+l move right 
 
-# --- FLOATING & SPACE BINDS ---
-# Stagger floating windows script on Mod+Space
-bindsym $mod+space exec $float_stagger
+# Layout Controls 
+bindsym $mod+b splith 
+bindsym $mod+v splitv 
+bindsym $mod+f fullscreen toggle 
+bindsym $mod+space exec $float_stagger 
+bindsym $mod+Shift+space floating toggle 
+bindsym $mod+a focus parent 
 
-# Toggle ALL windows on current workspace to floating mode
-bindsym $mod+Shift+space [workspace="__current__"] floating toggle
+# Workspaces 
+bindsym $mod+1 workspace number 1 
+bindsym $mod+2 workspace number 2 
+bindsym $mod+3 workspace number 3 
+bindsym $mod+4 workspace number 4 
+bindsym $mod+5 workspace number 5 
 
-# Workspaces
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
+bindsym $mod+Shift+1 move container to workspace number 1 
+bindsym $mod+Shift+2 move container to workspace number 2 
+bindsym $mod+Shift+3 move container to workspace number 3 
+bindsym $mod+Shift+4 move container to workspace number 4 
+bindsym $mod+Shift+5 move container to workspace number 5 
 
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
+# Audio / Volume Controls 
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- 
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ 
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle 
 
-# Audio / Volume Controls
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+# Screen Brightness Controls 
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- 
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ 
 
-# Screen Brightness Controls
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+# Screenshots 
+bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy 
+bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy 
 
-# Screenshots
-bindsym Print exec grim -g "$(slurp)" - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy
-bindsym Shift+Print exec grim - | tee ~/Pictures/Screenshot_$(date +"%Y-%m-%d_%H-%M-%S").png | wl-copy
+# ========================================== 
+# 4. WINDOW RULES & FLOATING DIALOGS 
+# ========================================== 
+for_window [app_id=".*"] title_format "%title" 
+for_window [app_id="pavucontrol"] floating enable, resize set 650 400 
+for_window [app_id="blueman-manager"] floating enable, resize set 600 400 
+for_window [window_role="pop-up"] floating enable 
+for_window [window_role="bubble"] floating enable 
+for_window [window_role="dialog"] floating enable 
 
-# ==========================================
-# 4. WINDOW RULES & FLOATING DIALOGS
-# ==========================================
-for_window [app_id=".*"] title_format "%title"
-for_window [app_id="pavucontrol"] floating enable, resize set 650 400
-for_window [app_id="blueman-manager"] floating enable, resize set 600 400
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="dialog"] floating enable
-
-# ==========================================
-# 5. AUTOSTART DAEMONS
-# ==========================================
-exec_always pkill waybar; waybar
+# ========================================== 
+# 5. AUTOSTART DAEMONS 
+# ========================================== 
+exec_always pkill waybar; waybar 
 exec_always pkill autotiling; autotiling
