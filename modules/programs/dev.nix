@@ -12,9 +12,14 @@
     docker-compose
     gnome-boxes
     obs-studio
+    qemu
+    virt-manager
+    virt-viewer
   ];
 
   virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.docker = {
     enable = true;

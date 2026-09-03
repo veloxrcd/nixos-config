@@ -44,7 +44,7 @@ services.blueman.enable = true;
 
   users.users.mo = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" "libvirtd"];
     shell = pkgs.fish;
   };
 
