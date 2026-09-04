@@ -94,22 +94,10 @@ bindsym $mod+Shift+l move right
 bindsym $mod+p splith 
 bindsym $mod+v splitv 
 bindsym $mod+f fullscreen toggle 
-bindsym $mod+space exec $float_stagger 
-bindsym $mod+Shift+space floating toggle 
 bindsym $mod+a focus parent 
 
 # Workspaces 
-bindsym $mod+1 workspace number 1 
-bindsym $mod+2 workspace number 2 
-bindsym $mod+3 workspace number 3 
-bindsym $mod+4 workspace number 4 
-bindsym $mod+5 workspace number 5 
 
-bindsym $mod+Shift+1 move container to workspace number 1 
-bindsym $mod+Shift+2 move container to workspace number 2 
-bindsym $mod+Shift+3 move container to workspace number 3 
-bindsym $mod+Shift+4 move container to workspace number 4 
-bindsym $mod+Shift+5 move container to workspace number 5 
 
 # Audio / Volume Controls 
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
@@ -149,4 +137,3 @@ exec_always rot8
 bindsym $mod+b exec /home/mo/.local/bin/bhop_toggle.sh
 
 # Intercept spacebar to evaluate state and inject via ydotool
-bindsym --no-repeat space exec /home/mo/.local/bin/bhop_burst.sh
