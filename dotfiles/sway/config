@@ -131,9 +131,6 @@ exec_always pkill autotiling; autotiling
 exec_always rot8
 
 
-# --- Roblox Evade Bhop Macro ---
-
-# Toggle macro state ON / OFF (shows swaynag notification)
+# --- ROBLOX EVADE BHOP CONFIGURATION ---
 bindsym $mod+b exec /home/mo/.local/bin/bhop_toggle.sh
-
-# Intercept spacebar to evaluate state and inject via ydotool
+bindsym Mod1+space exec /home/mo/.local/bin/bhop_burst.sh
