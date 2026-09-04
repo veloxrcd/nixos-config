@@ -144,11 +144,12 @@ exec_always rot8
 
 
 # --- Bhop Macro Configuration ---
-bindsym $mod+b mode "BHOP_ENABLED"
+bindsym $mod+b mode "BHOP_ENABLED"; exec swaynag -m "BHOP MACRO: ENABLED" -t warning &
 
 mode "BHOP_ENABLED" {
     bindsym --release space exec /home/velox/.local/bin/bhop_burst.sh
-    bindsym $mod+b mode "default"
-    bindsym Escape mode "default"
+    bindsym $mod+b mode "default"; exec killall swaynag; exec swaynag -m "BHOP MACRO: DISABLED" -t green &
+    bindsym Escape mode "default"; exec killall swaynag; exec swaynag -m "BHOP MACRO: DISABLED" -t green &
 }
+
 
