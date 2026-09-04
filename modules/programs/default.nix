@@ -31,5 +31,6 @@
     chromium
     fishPlugins.tide
     ydotool
+    wtype
   ];
 }

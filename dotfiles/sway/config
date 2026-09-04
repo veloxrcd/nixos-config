@@ -147,7 +147,6 @@ exec_always rot8
 
 # Toggle Macro ON with Mod4+b (Super+b)
 bindsym $mod+b mode "BHOP_ENABLED"; exec notify-send "Bhop Macro" "ENABLED" -i input-keyboard
-
 # Active Bhop Mode
 mode "BHOP_ENABLED" {
     # Space triggers the 50ms rapid burst script
