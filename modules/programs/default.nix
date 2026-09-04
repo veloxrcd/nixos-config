@@ -30,5 +30,6 @@
     inputs.termipedia.packages.${system}.termipedia
     chromium
     fishPlugins.tide
+    ydotool
   ];
 }

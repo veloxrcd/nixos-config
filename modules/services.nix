@@ -6,6 +6,7 @@
   services.input-remapper.enable = true;
   services.power-profiles-daemon.enable = true;
   services.flatpak.enable = true;
+  programs.ydotool.enable = true;
 
 
   services.openssh = {
