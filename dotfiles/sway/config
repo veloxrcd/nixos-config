@@ -144,11 +144,13 @@ exec_always rot8
 
 
 # --- Bhop Macro Configuration ---
-bindsym $mod+b mode "BHOP_ENABLED"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: ENABLED" -t warning & SLEEP_PID=$!; (sleep 5; kill $SLEEP_PID 2>/dev/null; killall swaynag 2>/dev/null) &'
+bindsym $mod+b mode "BHOP_ENABLED"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: ENABLED" -t warning & (sleep 5; killall swaynag 2>/dev/null) &'
 
 mode "BHOP_ENABLED" {
-    bindsym space exec /home/mo/.local/bin/bhop_burst.sh
-    bindsym $mod+b mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & SLEEP_PID=$!; (sleep 5; kill $SLEEP_PID 2>/dev/null; killall swaynag 2>/dev/null) &'
-    bindsym Escape mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & SLEEP_PID=$!; (sleep 5; kill $SLEEP_PID 2>/dev/null; killall swaynag 2>/dev/null) &'
-}
+    # Use explicit exec call pointing to /home/mo
+    bindsym --no-repeat space exec /home/mo/.local/bin/bhop_burst.sh
 
+    # Toggle off
+    bindsym $mod+b mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & (sleep 5; killall swaynag 2>/dev/null) &'
+    bindsym Escape mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & (sleep 5; killall swaynag 2>/dev/null) &'
+}
