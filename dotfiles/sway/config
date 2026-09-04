@@ -143,11 +143,10 @@ exec_always pkill autotiling; autotiling
 exec_always rot8
 
 
-# --- Bhop Macro Configuration ---
-bindsym $mod+b mode "BHOP_ENABLED"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: ENABLED" -t warning & (sleep 5; killall swaynag 2>/dev/null) &'
+# --- Roblox Evade Bhop Macro ---
 
-mode "BHOP_ENABLED" {
-    bindsym --no-repeat space exec "/home/mo/.local/bin/bhop_burst.sh &"
-    bindsym $mod+b mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & (sleep 5; killall swaynag 2>/dev/null) &'
-    bindsym Escape mode "default"; exec bash -c 'killall swaynag 2>/dev/null; swaynag -m "BHOP MACRO: DISABLED" -t green & (sleep 5; killall swaynag 2>/dev/null) &'
-}
+# Toggle macro state ON / OFF (shows swaynag notification)
+bindsym $mod+b exec /home/mo/.local/bin/bhop_toggle.sh
+
+# Intercept spacebar to evaluate state and inject via ydotool
+bindsym --no-repeat space exec /home/mo/.local/bin/bhop_burst.sh
