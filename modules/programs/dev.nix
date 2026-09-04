@@ -15,6 +15,7 @@
     qemu
     virt-manager
     virt-viewer
+    rot8
   ];
 
   virtualisation.libvirtd.enable = true;

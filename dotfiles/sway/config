@@ -140,3 +140,4 @@ for_window [window_role="dialog"] floating enable
 # ========================================== 
 exec_always pkill waybar; waybar 
 exec_always pkill autotiling; autotiling
+exec_always rot8

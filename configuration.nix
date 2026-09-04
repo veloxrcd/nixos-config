@@ -41,6 +41,7 @@ hardware.graphics.enable = true;
 boot.kernelPackages = pkgs.linuxPackages_latest;
 hardware.bluetooth.enable = true;
 services.blueman.enable = true;
+hardware.sensor.iio.enable = true;
 
   users.users.mo = {
     isNormalUser = true;
