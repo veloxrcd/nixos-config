@@ -45,7 +45,7 @@ hardware.sensor.iio.enable = true;
 
   users.users.mo = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" "libvirtd"];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" "libvirtd" "ydotool"];
     shell = pkgs.fish;
   };
 
