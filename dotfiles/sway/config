@@ -91,7 +91,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right 
 
 # Layout Controls 
-bindsym $mod+b splith 
+bindsym $mod+p splith 
 bindsym $mod+v splitv 
 bindsym $mod+f fullscreen toggle 
 bindsym $mod+space exec $float_stagger 
@@ -141,3 +141,23 @@ for_window [window_role="dialog"] floating enable
 exec_always pkill waybar; waybar 
 exec_always pkill autotiling; autotiling
 exec_always rot8
+
+
+# --- Bhop Macro Configuration ---
+
+# Toggle Macro ON with Mod4+b (Super+b)
+bindsym $mod+b mode "BHOP_ENABLED"; exec notify-send "Bhop Macro" "ENABLED" -i input-keyboard
+
+# Active Bhop Mode
+mode "BHOP_ENABLED" {
+    # Space triggers the 50ms rapid burst script
+    bindsym --no-repeat space exec ~/.local/bin/bhop_burst.sh
+
+    # Press $mod+b again to disable macro and restore normal spacebar behavior
+    bindsym $mod+b mode "default"; exec notify-send "Bhop Macro" "DISABLED" -i input-keyboard
+    
+    # Escape key fallback to disable macro
+    bindsym Escape mode "default"; exec notify-send "Bhop Macro" "DISABLED" -i input-keyboard
+}
+
+
