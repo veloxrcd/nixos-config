@@ -62,6 +62,8 @@ bindsym $mod+p splith
 bindsym $mod+v splitv 
 bindsym $mod+f fullscreen toggle 
 bindsym $mod+a focus parent 
+bindsym $mod+Shift+space floating toggle
+floating_modifier $mod normal
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
