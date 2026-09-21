@@ -37,10 +37,12 @@
 
   boot.supportedFilesystems = [ "ext4" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  
 
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
+  hardware.uinput.enable = true;
 
   users.users.mo = {
     isNormalUser = true;

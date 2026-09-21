@@ -16,6 +16,7 @@
     virt-manager
     virt-viewer
     rot8
+    (python3.withPackages (ps: [ ps.evdev ]))
   ];
 
   virtualisation.libvirtd.enable = true;
