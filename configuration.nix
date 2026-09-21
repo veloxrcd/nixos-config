@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ./modules/core.nix
     ./modules/desktop.nix
     ./modules/networking.nix
@@ -34,7 +35,7 @@
     options = "--delete-older-than 7d";
   };
 
-  boot.supportedFilesystems = [ "btrfs" ];
+  boot.supportedFilesystems = [ "ext4" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.graphics.enable = true;
