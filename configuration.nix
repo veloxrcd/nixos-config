@@ -39,6 +39,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   
 
+
+  nixpkgs.config.allowUnfree= true;
+
+
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
   hardware.sensor.iio.enable = true;
