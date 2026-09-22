@@ -46,7 +46,7 @@
 
   users.users.mo = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "gamemode" "libvirtd" "ydotool" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "input" "gamemode" "libvirtd" "ydotool" ];
     shell = pkgs.zsh;
   };
 
