@@ -65,6 +65,7 @@
     rofi
     swaylock-effects
     inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.freesmlauncher.packages.${system}.freesmlauncher
     fastfetch
     cmatrix
     lavat
