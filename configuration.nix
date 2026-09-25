@@ -40,7 +40,7 @@
   
 
 
-  nixpkgs.config.allowUnfree= true;
+  nixpkgs.config.allowUnfree = true;
 
 
   hardware.graphics.enable = true;

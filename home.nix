@@ -24,6 +24,24 @@
 
   home.file.".p10k.zsh".source = ./dotfiles/zsh/.p10k.zsh;
 
+
+  programs.btop.enable = true;
+  programs.zoxide.enable = true;
+  programs.eza.enable = true;
+  programs.bat.enable = true;
+
+  home.shellAliases = {
+    cat = "bat";
+    cd = "z";
+    gitstatus = "lazygit";
+    fm = "yazi";
+    help = "tldr";
+  };
+
+
+
+
+
   home.packages = with pkgs; [
     pwvucontrol
     cliphist
