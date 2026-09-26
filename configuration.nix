@@ -10,6 +10,7 @@
     ./modules/services.nix
     ./modules/gaming.nix
     ./modules/programs
+    ./modules/splash.nix
   ];
 
   environment.shellAliases = {
