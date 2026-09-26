@@ -53,5 +53,7 @@
     inputs.termipedia.packages.${system}.termipedia
     chromium
     wtype
+    ffmpeg-full
+    widevine-cdm
   ];
 }
