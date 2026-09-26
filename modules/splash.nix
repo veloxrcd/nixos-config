@@ -2,25 +2,25 @@
 
 {
   boot = {
-    # 1. Force the integrated Intel kernel modesetting to load early
+    # 1. CRITICAL: Force the Intel modesetting driver to load in Stage 1 initrd
     initrd.kernelModules = [ "i915" ];
 
-    # 2. Enable Plymouth using the fallback-friendly default theme
+    # 2. Configure Plymouth
     plymouth = {
       enable = true;
       theme = "bgrt"; 
     };
 
-    # 3. Tell the kernel to allocate simple graphics space immediately
+    # 3. Clean kernel parameters that won't stall the GPU
     kernelParams = [ 
       "quiet" 
       "splash"
-      "plymouth.use-simpledrm"
+      "i915.fastboot=1"          # Prevents Intel from blinking or resetting the display
+      "fbcon=nodefer"            # Force the frame buffer to initialize instantly
     ];
 
-    # 4. Give systemd enough visibility to hand over graphics smoothly
+    # 4. Turn off systemd's aggressive silencing which can block the DRM graphics stack
     consoleLogLevel = 3;
     initrd.verbose = false;
-    initrd.systemd.enable = true;
   };
 }
