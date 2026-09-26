@@ -2,29 +2,25 @@
 
 {
   boot = {
-    # Enable Plymouth with the BGRT theme to keep the Lenovo logo
+    # 1. Force the integrated Intel kernel modesetting to load early
+    initrd.kernelModules = [ "i915" ];
+
+    # 2. Enable Plymouth using the fallback-friendly default theme
     plymouth = {
       enable = true;
-      theme = "bgrt";
+      theme = "bgrt"; 
     };
 
-    # Hide regular kernel text scrolling during boot
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    
-    # Kernel parameters for a completely silent, smooth transition
+    # 3. Tell the kernel to allocate simple graphics space immediately
     kernelParams = [ 
       "quiet" 
-      "splash" 
-      "boot.shell_on_fail" 
-      "loglevel=3" 
-      "rd.systemd.show_status=false" 
-      "rd.udev.log_level=3" 
-      "udev.log_priority=3" 
+      "splash"
+      "plymouth.use-simpledrm"
     ];
-    
-    # Load graphics drivers early in the boot process
+
+    # 4. Give systemd enough visibility to hand over graphics smoothly
+    consoleLogLevel = 3;
+    initrd.verbose = false;
     initrd.systemd.enable = true;
   };
 }
-
