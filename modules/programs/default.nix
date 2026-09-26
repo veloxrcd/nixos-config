@@ -51,7 +51,7 @@
     mpv
     file-roller
     inputs.termipedia.packages.${system}.termipedia
-    chromium
+    firefox
     wtype
     ffmpeg-full
     widevine-cdm
