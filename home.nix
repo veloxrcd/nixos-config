@@ -25,6 +25,13 @@
   home.file.".p10k.zsh".source = ./dotfiles/zsh/.p10k.zsh;
 
 
+  home.file.".local/bin/roblox" = {
+  text = builtins.readFile ./modules/roblox/roblox-macro.py;
+  executable = true;
+};
+
+
+
   programs.btop.enable = true;
   programs.zoxide.enable = true;
   programs.eza.enable = true;
