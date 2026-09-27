@@ -31,13 +31,18 @@
     };
 
 
+    mac-style-plymouth = {
+     url = "github:SergioRibera/s4rchiso-plymouth-theme";
+     inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, qylock, freesmlauncher, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, qylock, freesmlauncher, mac-style-plymouth, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
