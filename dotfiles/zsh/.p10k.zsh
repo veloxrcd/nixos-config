@@ -192,8 +192,8 @@ typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
 (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
 'builtin' 'unset' 'p10k_config_opts'
 # Force the left prompt layout to show only the NixOS logo and Directory
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir prompt_char)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir prompt_char)
+typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 # Remove the color blocks (Backgrounds) entirely
 typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=none
