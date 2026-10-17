@@ -1,70 +1,70 @@
 * {
+    font-family: "Iosevka Nerd Font";
+    font-weight: bold;
+    font-size: 13px;
     border: none;
     border-radius: 0;
-    font-family: "Iosevka Nerd Font", "Font Awesome 6 Free", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    min-height: 0;
 }
 
 window#waybar {
-    background: transparent;
+    background-color: transparent;
 }
 
-.modules-center {
-    background: #0b0b0b;
-    border: 1px solid #1a1a1a;
-    border-radius: 10px;
-    padding: 2px 10px;
+/* Modules base */
+#custom-launcher,
+#workspaces,
+#clock,
+#pulseaudio,
+#network,
+#battery,
+#custom-powermenu {
+    background-color: #282828;
+    color: #ebdbb2;
+    padding: 2px 12px;
+    border-radius: 8px;
+    border: 1px solid #3c3836;
+}
+
+#custom-launcher {
+    color: #83a598;
+    font-size: 16px;
+    padding-right: 14px;
 }
 
 #workspaces button {
-    padding: 1px 8px;
-    margin: 0 2px;
-    color: #777777;
-    background: transparent;
-    border-radius: 6px;
-    transition: all 0.15s ease-in-out;
+    padding: 0 5px;
+    color: #928374;
 }
 
-#workspaces button.focused {
-    color: #000000;
-    background: #ffffff;
-}
-
-#workspaces button:hover {
-    background: #1e1e1e;
-    color: #ffffff;
-}
-
-#clock, #network, #bluetooth, #pulseaudio, #battery, #tray {
-    padding: 0 8px;
-    color: #e0e0e0;
+#workspaces button.active {
+    color: #fabd2f;
 }
 
 #clock {
-    color: #ffffff;
-    font-weight: bold;
-    border-left: 1px solid #222222;
-    border-right: 1px solid #222222;
-    margin: 0 6px;
-    padding: 0 10px;
+    color: #fabd2f;
 }
 
-#network:hover, #bluetooth:hover, #pulseaudio:hover, #battery:hover {
-    color: #ffffff;
-    background: #161616;
-    border-radius: 5px;
+#pulseaudio {
+    color: #8ec07c;
 }
 
-tooltip {
-    background: #0b0b0b;
-    border: 1px solid #1a1a1a;
-    border-radius: 8px;
+#network {
+    color: #83a598;
 }
 
-tooltip label {
-    color: #ffffff;
-    font-size: 12px;
-    padding: 4px 8px;
+#battery {
+    color: #b8bb26;
+}
+
+#battery.warning {
+    color: #fabd2f;
+}
+
+#battery.critical {
+    color: #fb4934;
+}
+
+#custom-powermenu {
+    color: #fb4934;
+    padding-right: 14px;
 }

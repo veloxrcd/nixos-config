@@ -1,0 +1,58 @@
+configuration {
+    font: "Iosevka Nerd Font 12";
+}
+
+* {
+    bg: #282828;
+    bg-alt: #3c3836;
+    fg: #ebdbb2;
+    red: #fb4934;
+    yellow: #fabd2f;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-color: @yellow;
+    border-radius: 10px;
+    width: 300px;
+    location: center;
+    padding: 15px;
+}
+
+mainbox {
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    children: [ "prompt" ];
+    margin: 0px 0px 10px 0px;
+}
+
+prompt {
+    text-color: @yellow;
+    font: "Iosevka Nerd Font Bold 14";
+}
+
+listview {
+    lines: 4;
+    columns: 1;
+    spacing: 5px;
+}
+
+element {
+    padding: 8px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: @bg-alt;
+    text-color: @yellow;
+}
+
+element-text {
+    vertical-align: 0.5;
+}

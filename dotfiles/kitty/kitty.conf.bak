@@ -1,0 +1,41 @@
+font_family      Iosevka Nerd Font
+bold_font        Iosevka Nerd Font Bold
+italic_font      Iosevka Nerd Font Italic
+bold_italic_font Iosevka Nerd Font Bold Italic
+font_size        11.0
+
+scrollback_lines        2000
+repaint_delay           16
+input_delay             3
+sync_to_monitor         no
+enable_audio_bell       no
+update_check_interval   0
+
+window_padding_width    12
+confirm_os_window_close 0
+background_opacity      0.88
+background_blur         1
+
+foreground           #ffffff
+background           #0b0b0b
+selection_foreground #000000
+selection_background #ffffff
+cursor               #ffffff
+cursor_text_color    #000000
+
+color0  #121212
+color8  #444444
+color1  #666666
+color9  #888888
+color2  #888888
+color10 #aaaaaa
+color3  #aaaaaa
+color11 #cccccc
+color4  #cccccc
+color12 #dddddd
+color5  #dddddd
+color13 #eeeeee
+color6  #eeeeee
+color14 #ffffff
+color7  #e0e0e0
+color15 #ffffff
