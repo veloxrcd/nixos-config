@@ -3,9 +3,9 @@ configuration {
 }
 
 * {
-    bg: #282828;
-    bg-alt: #3c3836;
-    fg: #ebdbb2;
+    bg0: #282828;
+    bg1: #3c3836;
+    fg:  #ebdbb2;
     red: #fb4934;
     yellow: #fabd2f;
 
@@ -14,45 +14,49 @@ configuration {
 }
 
 window {
-    background-color: @bg;
+    background-color: @bg0;
     border: 2px;
-    border-color: @yellow;
-    border-radius: 10px;
-    width: 300px;
+    border-color: @red;
+    border-radius: 12px;
+    width: 320px;
     location: center;
-    padding: 15px;
+    padding: 18px;
 }
 
 mainbox {
+    spacing: 12px;
     children: [ "inputbar", "listview" ];
 }
 
 inputbar {
     children: [ "prompt" ];
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 4px 0px;
 }
 
 prompt {
-    text-color: @yellow;
+    text-color: @red;
     font: "Iosevka Nerd Font Bold 14";
 }
 
 listview {
     lines: 4;
     columns: 1;
-    spacing: 5px;
+    spacing: 8px;
+    fixed-height: true;
 }
 
 element {
-    padding: 8px;
-    border-radius: 6px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: @bg1;
 }
 
 element selected {
-    background-color: @bg-alt;
-    text-color: @yellow;
+    background-color: @red;
+    text-color: @bg0;
 }
 
 element-text {
     vertical-align: 0.5;
+    font: "Iosevka Nerd Font Bold 12";
 }
