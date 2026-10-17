@@ -1,27 +1,22 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-lock="󰌾  Lock"
-logout="󰍃  Logout"
-suspend="󰤄  Suspend"
-reboot="󰜎  Reboot"
-shutdown="󰐥  Power Off"
+# Options
+shutdown="󰐥 Shutdown"
+reboot="󰜉 Reboot"
+lock="󰌾 Lock"
+logout="󰍃 Logout"
 
-chosen=$(printf "%s\n" "$lock" "$logout" "$suspend" "$reboot" "$shutdown" | rofi -dmenu -i -p "Power Menu")
+# Get choice from rofi
+options="$shutdown\n$reboot\n$lock\n$logout"
+chosen=$(echo -e "$options" | rofi -dmenu -i -theme ~/nixos-config/dotfiles/rofi/powermenu.rasi -p "Power")
 
-case "$chosen" in
-    "$lock")
-        swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb9af7 --key-hl-color 7dcfff --line-color 00000000 --inside-color 1a1b2688 --separator-color 00000000 --grace 2 --fade-in 0.2
-        ;;
-    "$logout")
-        swaymsg exit
-        ;;
-    "$suspend")
-        systemctl suspend
-        ;;
-    "$reboot")
-        systemctl reboot
-        ;;
-    "$shutdown")
-        systemctl poweroff
-        ;;
+case $chosen in
+    $shutdown)
+        systemctl poweroff ;;
+    $reboot)
+        systemctl reboot ;;
+    $lock)
+        loginctl lock-session ;;
+    $logout)
+        pkill -u $USER ;;
 esac

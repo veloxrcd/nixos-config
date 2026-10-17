@@ -1,84 +1,79 @@
 configuration {
-    modi: "drun,run,filebrowser";
+    modi: "drun,run";
     show-icons: true;
-    icon-theme: "Papirus";
-    font: "Iosevka Nerd Font 11";
-    drun-display-format: "{icon} {name}";
-    display-drun: " Search";
-    display-run: " Run";
-    display-filebrowser: " Files";
+    display-drun: "󰣇";
+    drun-display-format: "{name}";
+    font: "Iosevka Nerd Font 10.5";
 }
 
 * {
-    bg-dim:      #1d2021;
-    bg0:         #282828;
-    bg1:         #3c3836;
-    fg0:         #fbf1c7;
-    fg1:         #ebdbb2;
-    yellow:      #fabd2f;
-    blue:        #83a598;
-    red:         #fb4934;
-    green:       #b8bb26;
+    bg0:     #282828;
+    bg1:     #3c3836;
+    fg0:     #fbf1c7;
+    fg1:     #ebdbb2;
+    gray:    #928374;
+    yellow:  #fabd2f;
+    border:  #504945;
 
     background-color: transparent;
-    text-color: @fg1;
+    text-color:       @fg1;
 }
 
 window {
     background-color: @bg0;
-    border: 2px;
-    border-color: @yellow;
-    border-radius: 12px;
-    width: 600px;
-    padding: 20px;
+    border:           1px;
+    border-color:     @border;
+    border-radius:    10px;
+    width:            480px;
+    padding:          14px;
 }
 
 mainbox {
-    spacing: 15px;
+    spacing:  10px;
     children: [ "inputbar", "listview" ];
 }
 
 inputbar {
     background-color: @bg1;
-    border-radius: 8px;
-    padding: 10px 14px;
-    children: [ "prompt", "entry" ];
-    spacing: 10px;
+    border-radius:    6px;
+    padding:          8px 12px;
+    children:         [ "prompt", "entry" ];
+    spacing:          10px;
 }
 
 prompt {
     text-color: @yellow;
-    font: "Iosevka Nerd Font Bold 12";
+    font:       "Iosevka Nerd Font Bold 12";
 }
 
 entry {
-    placeholder: "Type to search...";
-    placeholder-color: #928374;
-    text-color: @fg0;
+    placeholder:       "Search...";
+    placeholder-color: @gray;
+    text-color:        @fg0;
 }
 
 listview {
-    lines: 8;
-    columns: 1;
-    spacing: 6px;
+    lines:        6;
+    columns:      1;
+    spacing:      4px;
     fixed-height: false;
+    scrollbar:    false;
 }
 
 element {
-    padding: 8px 12px;
+    padding:       8px 10px;
     border-radius: 6px;
+    spacing:       10px;
 }
 
 element selected {
     background-color: @bg1;
-    border: 1px;
-    border-color: @yellow;
-    text-color: @yellow;
+    text-color:       @yellow;
 }
 
 element-icon {
-    size: 24px;
-    margin: 0 10px 0 0;
+    size:           18px;
+    vertical-align: 0.5;
 }
 
 element-text {

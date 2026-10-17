@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Options
-shutdown="󰐥 Shutdown"
-reboot="󰜉 Reboot"
-lock="󰌾 Lock"
-logout="󰍃 Logout"
+# Options with Nerd Font icons
+shutdown="󰐥"
+reboot="󰜉"
+lock="󰌾"
+logout="󰍃"
 
-# Get choice from rofi
+# Pass options to rofi with horizontal menu layout
 options="$shutdown\n$reboot\n$lock\n$logout"
 chosen=$(echo -e "$options" | rofi -dmenu -i -theme ~/nixos-config/dotfiles/rofi/powermenu.rasi -p "Power")
 
